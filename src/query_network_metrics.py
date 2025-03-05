@@ -13,7 +13,7 @@ PASSWORD = "-5HJtLOH+H3ma-S*9wAA"
 # Host IP and time range
 HOST_IP = "10.0.0.5"
 START_TIME = "2025-02-23T18:00:00+00:00"
-END_TIME = "2025-02-23T20:00:00+00:00"
+END_TIME = "2025-02-23T18:10:00+00:00"
 
 def query_network_metrics():
     """Query and save raw network metrics to a JSON file"""
@@ -115,36 +115,59 @@ def export_network_metrics_to_excel():
                 except:
                     formatted_time = timestamp
                 
-                # Get network metrics - need to iterate through network interfaces
-                network_data = source.get('system', {}).get('network', {})
-                
                 # Initialize counters for all interfaces
                 bytes_in_total = 0
                 bytes_out_total = 0
                 packets_in_total = 0
                 packets_out_total = 0
                 
-                # Get interface data
-                for interface_name, interface_data in network_data.items():
-                    # Skip non-interface entries (like "interface_name")
-                    if not isinstance(interface_data, dict):
-                        continue
-                    
-                    # Skip lo (loopback) interface as it's typically not relevant for external traffic
-                    if interface_name == 'lo':
-                        continue
-                    
-                    # Extract bytes in/out
-                    bytes_in = interface_data.get('in', {}).get('bytes', 0)
-                    bytes_out = interface_data.get('out', {}).get('bytes', 0)
-                    packets_in = interface_data.get('in', {}).get('packets', 0)
-                    packets_out = interface_data.get('out', {}).get('packets', 0)
-                    
-                    # Add to total
-                    bytes_in_total += bytes_in if isinstance(bytes_in, (int, float)) else 0
-                    bytes_out_total += bytes_out if isinstance(bytes_out, (int, float)) else 0
-                    packets_in_total += packets_in if isinstance(packets_in, (int, float)) else 0
-                    packets_out_total += packets_out if isinstance(packets_out, (int, float)) else 0
+                # Try to get network data from system.network structure (per interface)
+                network_data = source.get('system', {}).get('network', {})
+                if network_data:
+                    # If it's a direct interface entry
+                    if isinstance(network_data, dict) and 'name' in network_data:
+                        # Get interface data
+                        bytes_in = network_data.get('in', {}).get('bytes', 0)
+                        bytes_out = network_data.get('out', {}).get('bytes', 0)
+                        packets_in = network_data.get('in', {}).get('packets', 0)
+                        packets_out = network_data.get('out', {}).get('packets', 0)
+                        
+                        bytes_in_total += bytes_in if isinstance(bytes_in, (int, float)) else 0
+                        bytes_out_total += bytes_out if isinstance(bytes_out, (int, float)) else 0
+                        packets_in_total += packets_in if isinstance(packets_in, (int, float)) else 0
+                        packets_out_total += packets_out if isinstance(packets_out, (int, float)) else 0
+                    else:
+                        # Get data from all interfaces
+                        for interface_name, interface_data in network_data.items():
+                            if not isinstance(interface_data, dict) or interface_name == 'lo':
+                                continue
+                            
+                            bytes_in = interface_data.get('in', {}).get('bytes', 0)
+                            bytes_out = interface_data.get('out', {}).get('bytes', 0)
+                            packets_in = interface_data.get('in', {}).get('packets', 0)
+                            packets_out = interface_data.get('out', {}).get('packets', 0)
+                            
+                            bytes_in_total += bytes_in if isinstance(bytes_in, (int, float)) else 0
+                            bytes_out_total += bytes_out if isinstance(bytes_out, (int, float)) else 0
+                            packets_in_total += packets_in if isinstance(packets_in, (int, float)) else 0
+                            packets_out_total += packets_out if isinstance(packets_out, (int, float)) else 0
+                
+                # If no data from system.network, try host.network (aggregated stats)
+                if bytes_in_total == 0 and bytes_out_total == 0:
+                    host_network = source.get('host', {}).get('network', {})
+                    if host_network:
+                        ingress = host_network.get('ingress', {})
+                        egress = host_network.get('egress', {})
+                        
+                        bytes_in = ingress.get('bytes', 0)
+                        bytes_out = egress.get('bytes', 0)
+                        packets_in = ingress.get('packets', 0)
+                        packets_out = egress.get('packets', 0)
+                        
+                        bytes_in_total = bytes_in if isinstance(bytes_in, (int, float)) else 0
+                        bytes_out_total = bytes_out if isinstance(bytes_out, (int, float)) else 0
+                        packets_in_total = packets_in if isinstance(packets_in, (int, float)) else 0
+                        packets_out_total = packets_out if isinstance(packets_out, (int, float)) else 0
                 
                 # Convert bytes to MB for readability
                 bytes_in_mb = bytes_in_total / (1024 * 1024) if bytes_in_total else 0
@@ -228,7 +251,7 @@ def export_network_metrics_to_excel():
         print(f"Error: {response.text}")
 
 def calculate_network_rates():
-    """Calculate network transfer rates (MB/s) between points"""
+    """Calculate network transfer rates (MB/s) between points focusing on eth0 interface"""
     print("Calculating network transfer rates...")
     
     query = {
@@ -262,10 +285,15 @@ def calculate_network_rates():
             print("Not enough data points to calculate rates.")
             return
         
-        # Process data to calculate rates
+        # Process data to calculate rates for eth0
         timestamps = []
         bytes_in_values = []
         bytes_out_values = []
+        
+        # Debug - count different interface formats found
+        eth0_direct_count = 0
+        eth0_nested_count = 0
+        eth0_other_count = 0
         
         for hit in hits:
             try:
@@ -277,28 +305,48 @@ def calculate_network_rates():
                 # Parse timestamp
                 timestamp = datetime.datetime.fromisoformat(timestamp_str.replace('Z', '+00:00'))
                 
-                # Get network metrics - sum across all interfaces
+                # Get network data - specifically looking for system.network where name="eth0"
                 network_data = source.get('system', {}).get('network', {})
                 
-                bytes_in_total = 0
-                bytes_out_total = 0
-                
-                for interface_name, interface_data in network_data.items():
-                    if not isinstance(interface_data, dict) or interface_name == 'lo':
-                        continue
+                # First check the format where eth0 is directly inside system.network
+                if isinstance(network_data, dict) and network_data.get('name') == 'eth0':
+                    # Found eth0 interface data with direct structure
+                    eth0_direct_count += 1
+                    bytes_in = network_data.get('in', {}).get('bytes')
+                    bytes_out = network_data.get('out', {}).get('bytes')
                     
-                    bytes_in = interface_data.get('in', {}).get('bytes', 0)
-                    bytes_out = interface_data.get('out', {}).get('bytes', 0)
+                    if bytes_in is not None and bytes_out is not None:
+                        timestamps.append(timestamp)
+                        bytes_in_values.append(bytes_in)
+                        bytes_out_values.append(bytes_out)
+                
+                # If not found, try the format where eth0 is a sub-object of system.network
+                elif isinstance(network_data, dict) and 'eth0' in network_data:
+                    # Found eth0 in network_data dict keys
+                    eth0_nested_count += 1
+                    eth0_data = network_data.get('eth0', {})
+                    bytes_in = eth0_data.get('in', {}).get('bytes')
+                    bytes_out = eth0_data.get('out', {}).get('bytes')
                     
-                    bytes_in_total += bytes_in if isinstance(bytes_in, (int, float)) else 0
-                    bytes_out_total += bytes_out if isinstance(bytes_out, (int, float)) else 0
-                
-                timestamps.append(timestamp)
-                bytes_in_values.append(bytes_in_total)
-                bytes_out_values.append(bytes_out_total)
-                
+                    if bytes_in is not None and bytes_out is not None:
+                        timestamps.append(timestamp)
+                        bytes_in_values.append(bytes_in)
+                        bytes_out_values.append(bytes_out)
+            
             except Exception as e:
                 print(f"Error processing hit for rate calculation: {e}")
+        
+        print(f"Found eth0 interfaces: {eth0_direct_count} direct format, {eth0_nested_count} nested format")
+        print(f"Found {len(timestamps)} data points with valid eth0 network values")
+        
+        if len(timestamps) < 2:
+            print("Not enough data points to calculate rates.")
+            return
+        
+        print(f"First timestamp: {timestamps[0]}")
+        print(f"Last timestamp: {timestamps[-1]}")
+        print(f"First bytes in/out: {bytes_in_values[0]}/{bytes_out_values[0]}")
+        print(f"Last bytes in/out: {bytes_in_values[-1]}/{bytes_out_values[-1]}")
         
         # Calculate rates between consecutive measurements
         rates_data = []
@@ -306,25 +354,36 @@ def calculate_network_rates():
             time_diff = (timestamps[i] - timestamps[i-1]).total_seconds()
             
             if time_diff > 0:
-                # Calculate bytes/second
+                # Calculate bytes/second - taking the difference between counter values
                 bytes_in_rate = (bytes_in_values[i] - bytes_in_values[i-1]) / time_diff
                 bytes_out_rate = (bytes_out_values[i] - bytes_out_values[i-1]) / time_diff
+                
+                # Check if rate is reasonable (counters might reset after reboot)
+                if bytes_in_rate < 0 or bytes_out_rate < 0:
+                    print(f"Skipping negative rate at {timestamps[i]} (likely counter reset)")
+                    continue
                 
                 # Convert to MB/s
                 mb_in_rate = bytes_in_rate / (1024 * 1024)
                 mb_out_rate = bytes_out_rate / (1024 * 1024)
                 
+                # Filter out implausible values (B2s VM has max ~125 MB/s)
+                if mb_in_rate > 125 or mb_out_rate > 125:
+                    print(f"Filtering implausible rate: IN={mb_in_rate:.2f} OUT={mb_out_rate:.2f} MB/s")
+                    continue
+                
                 rates_data.append({
                     'Timestamp': timestamps[i].strftime('%Y-%m-%d %H:%M:%S'),
-                    'In Rate (MB/s)': mb_in_rate if mb_in_rate > 0 else 0,
-                    'Out Rate (MB/s)': mb_out_rate if mb_out_rate > 0 else 0
+                    'In Rate (MB/s)': mb_in_rate,
+                    'Out Rate (MB/s)': mb_out_rate,
+                    'Time Diff (s)': time_diff
                 })
         
         if rates_data:
             # Create DataFrame
             rates_df = pd.DataFrame(rates_data)
             
-            # Calculate average rates
+            # Calculate average and max rates
             avg_in_rate = rates_df['In Rate (MB/s)'].mean()
             avg_out_rate = rates_df['Out Rate (MB/s)'].mean()
             max_in_rate = rates_df['In Rate (MB/s)'].max()
@@ -334,30 +393,31 @@ def calculate_network_rates():
             summary = pd.DataFrame([{
                 'Timestamp': 'AVERAGE',
                 'In Rate (MB/s)': avg_in_rate,
-                'Out Rate (MB/s)': avg_out_rate
+                'Out Rate (MB/s)': avg_out_rate,
+                'Time Diff (s)': rates_df['Time Diff (s)'].mean()
             }, {
                 'Timestamp': 'MAX',
                 'In Rate (MB/s)': max_in_rate,
-                'Out Rate (MB/s)': max_out_rate
+                'Out Rate (MB/s)': max_out_rate,
+                'Time Diff (s)': rates_df['Time Diff (s)'].max()
             }])
             
-            rates_df = pd.concat([rates_df, summary])
-            
             # Save to Excel
-            excel_file = f"network_rates_{HOST_IP.replace('.', '_')}.xlsx"
+            df_for_excel = pd.concat([rates_df, summary])
+            excel_file = f"network_rates_{HOST_IP.replace('.', '_')}_eth0.xlsx"
             writer = pd.ExcelWriter(excel_file, engine='openpyxl')
-            rates_df.to_excel(writer, index=False, sheet_name='Network Rates')
+            df_for_excel.to_excel(writer, index=False, sheet_name='Network Rates')
             
             # Auto-adjust columns
-            for column in rates_df:
-                column_length = max(rates_df[column].astype(str).map(len).max(), len(column))
-                col_idx = rates_df.columns.get_loc(column)
+            for column in df_for_excel:
+                column_length = max(df_for_excel[column].astype(str).map(len).max(), len(column))
+                col_idx = df_for_excel.columns.get_loc(column)
                 writer.sheets['Network Rates'].column_dimensions[chr(65 + col_idx)].width = column_length + 2
             
             writer.close()
             
             print(f"\nExported {len(rates_data)} network rate calculations to {excel_file}")
-            print("\nNetwork Rate Summary:")
+            print("\nNetwork Rate Summary for eth0:")
             print(f"  Average In Rate: {avg_in_rate:.4f} MB/s")
             print(f"  Average Out Rate: {avg_out_rate:.4f} MB/s")
             print(f"  Maximum In Rate: {max_in_rate:.4f} MB/s")
