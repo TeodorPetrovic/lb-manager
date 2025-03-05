@@ -1,0 +1,2154 @@
+{
+    "took": 116,
+    "timed_out": false,
+    "_shards": {
+        "total": 58,
+        "successful": 58,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 10000,
+            "relation": "gte"
+        },
+        "max_score": 2.1384573,
+        "hits": [
+            {
+                "_index": "metricbeat-2025.02.23",
+                "_id": "Onf3M5UBeuJAdh3UfQvZ",
+                "_score": 2.1384573,
+                "_source": {
+                    "@version": "1",
+                    "filter_match_status": "no match",
+                    "service": {
+                        "type": "system"
+                    },
+                    "agent": {
+                        "name": "APP-1",
+                        "id": "0e205494-aecf-4a97-90cf-290f0b1b7e0b",
+                        "version": "8.17.2",
+                        "type": "metricbeat",
+                        "ephemeral_id": "d038c50e-604f-4012-bec6-e8a158ebac0d"
+                    },
+                    "cloud": {
+                        "provider": "azure",
+                        "region": "westeurope",
+                        "service": {
+                            "name": "Virtual Machines"
+                        },
+                        "machine": {
+                            "type": "Standard_B2s"
+                        },
+                        "account": {
+                            "id": "8df27c78-5714-4de0-99d4-367baf0f8b8a"
+                        },
+                        "instance": {
+                            "name": "APP-1",
+                            "id": "118b0557-8885-4da8-b766-4449eb2e1f13"
+                        }
+                    },
+                    "event": {
+                        "duration": 124903,
+                        "module": "system",
+                        "dataset": "system.load"
+                    },
+                    "metricset": {
+                        "name": "load",
+                        "period": 10000
+                    },
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "system": {
+                        "load": {
+                            "norm": {
+                                "15": 0.325,
+                                "1": 0.205,
+                                "5": 0.28
+                            },
+                            "1": 0.41,
+                            "5": 0.56,
+                            "cores": 2,
+                            "15": 0.65
+                        }
+                    },
+                    "host": {
+                        "ip": [
+                            "10.0.0.5",
+                            "fe80::6245:bdff:fe8f:432e"
+                        ],
+                        "os": {
+                            "kernel": "6.8.0-1021-azure",
+                            "platform": "ubuntu",
+                            "type": "linux",
+                            "family": "debian",
+                            "version": "24.04.2 LTS (Noble Numbat)",
+                            "name": "Ubuntu",
+                            "codename": "noble"
+                        },
+                        "containerized": false,
+                        "mac": [
+                            "60-45-BD-8F-43-2E"
+                        ],
+                        "architecture": "x86_64",
+                        "name": "app-1",
+                        "id": "ea41015ba9df4907a4e111a54ee2ee3b",
+                        "hostname": "APP-1"
+                    },
+                    "@timestamp": "2025-02-23T18:00:02.362Z",
+                    "tags": [
+                        "beats_input_raw_event"
+                    ],
+                    "source": "metricbeat"
+                }
+            },
+            {
+                "_index": "metricbeat-2025.02.23",
+                "_id": "O3f3M5UBeuJAdh3UfQvZ",
+                "_score": 2.1384573,
+                "_source": {
+                    "@version": "1",
+                    "filter_match_status": "no match",
+                    "process": {
+                        "state": "sleeping",
+                        "cpu": {
+                            "pct": 0.21,
+                            "start_time": "2025-02-23T09:24:26.000Z"
+                        },
+                        "working_directory": "/home/teodor/apps/sdn-news-backend",
+                        "parent": {
+                            "pid": 71868
+                        },
+                        "args": [
+                            "node",
+                            "/home/teodor/apps/sdn-news-backend/node_modules/.bin/ts-node",
+                            "src/app.ts"
+                        ],
+                        "pid": 71869,
+                        "command_line": "node /home/teodor/apps/sdn-news-backend/node_modules/.bin/ts-node src/app.ts",
+                        "name": "node",
+                        "memory": {
+                            "pct": 0.1361
+                        },
+                        "executable": "/usr/bin/node",
+                        "pgid": 71855
+                    },
+                    "service": {
+                        "type": "system"
+                    },
+                    "agent": {
+                        "name": "APP-1",
+                        "id": "0e205494-aecf-4a97-90cf-290f0b1b7e0b",
+                        "ephemeral_id": "d038c50e-604f-4012-bec6-e8a158ebac0d",
+                        "type": "metricbeat",
+                        "version": "8.17.2"
+                    },
+                    "cloud": {
+                        "provider": "azure",
+                        "region": "westeurope",
+                        "service": {
+                            "name": "Virtual Machines"
+                        },
+                        "machine": {
+                            "type": "Standard_B2s"
+                        },
+                        "account": {
+                            "id": "8df27c78-5714-4de0-99d4-367baf0f8b8a"
+                        },
+                        "instance": {
+                            "name": "APP-1",
+                            "id": "118b0557-8885-4da8-b766-4449eb2e1f13"
+                        }
+                    },
+                    "event": {
+                        "duration": 58690272,
+                        "module": "system",
+                        "dataset": "system.process"
+                    },
+                    "metricset": {
+                        "name": "process",
+                        "period": 10000
+                    },
+                    "user": {
+                        "name": "teodor"
+                    },
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "system": {
+                        "process": {
+                            "io": {
+                                "write_bytes": 1851392,
+                                "write_char": 54066984686,
+                                "read_char": 33798358399,
+                                "read_ops": 18339871,
+                                "write_ops": 18232202,
+                                "cancelled_write_bytes": 4096,
+                                "read_bytes": 13750272
+                            },
+                            "state": "sleeping",
+                            "num_threads": 7,
+                            "cmdline": "node /home/teodor/apps/sdn-news-backend/node_modules/.bin/ts-node src/app.ts",
+                            "cpu": {
+                                "start_time": "2025-02-23T09:24:26.000Z",
+                                "total": {
+                                    "value": 6579530.0,
+                                    "norm": {
+                                        "pct": 0.21
+                                    },
+                                    "pct": 0.42
+                                }
+                            },
+                            "memory": {
+                                "size": 1490247680,
+                                "rss": {
+                                    "pct": 0.1361,
+                                    "bytes": 551321600
+                                },
+                                "share": 51904512
+                            },
+                            "cgroup": {
+                                "id": "my-express-app.service",
+                                "cpu": {
+                                    "id": "my-express-app.service",
+                                    "stats": {
+                                        "usage": {
+                                            "norm": {
+                                                "pct": 0.0002
+                                            },
+                                            "pct": 0.0004,
+                                            "ns": 6586131855
+                                        },
+                                        "user": {
+                                            "norm": {
+                                                "pct": 0.0002
+                                            },
+                                            "pct": 0.0004,
+                                            "ns": 6409593680
+                                        },
+                                        "system": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0,
+                                            "ns": 176538175
+                                        }
+                                    },
+                                    "path": "/system.slice/my-express-app.service",
+                                    "pressure": {
+                                        "full": {
+                                            "60": {
+                                                "pct": 0.16
+                                            },
+                                            "300": {
+                                                "pct": 0.03
+                                            },
+                                            "10": {
+                                                "pct": 0.9
+                                            },
+                                            "total": 53821019
+                                        },
+                                        "some": {
+                                            "60": {
+                                                "pct": 4.58
+                                            },
+                                            "300": {
+                                                "pct": 3.3
+                                            },
+                                            "10": {
+                                                "pct": 6.85
+                                            },
+                                            "total": 849659913
+                                        }
+                                    }
+                                },
+                                "cgroups_version": 2,
+                                "path": "/system.slice/my-express-app.service",
+                                "memory": {
+                                    "id": "my-express-app.service",
+                                    "memsw": {
+                                        "low": {
+                                            "bytes": 0
+                                        },
+                                        "usage": {
+                                            "bytes": 0
+                                        },
+                                        "events": {
+                                            "max": 0,
+                                            "fail": 0,
+                                            "high": 0
+                                        }
+                                    },
+                                    "path": "/system.slice/my-express-app.service",
+                                    "mem": {
+                                        "low": {
+                                            "bytes": 0
+                                        },
+                                        "usage": {
+                                            "bytes": 532754432
+                                        },
+                                        "events": {
+                                            "oom_kill": 0,
+                                            "low": 0,
+                                            "max": 0,
+                                            "high": 0,
+                                            "oom": 0
+                                        }
+                                    },
+                                    "stats": {
+                                        "sock": {
+                                            "bytes": 5128192
+                                        },
+                                        "inactive_file": {
+                                            "bytes": 32768
+                                        },
+                                        "per_cpu": {
+                                            "bytes": 0
+                                        },
+                                        "anon": {
+                                            "bytes": 512487424
+                                        },
+                                        "file_thp": {
+                                            "bytes": 0
+                                        },
+                                        "thp_fault_alloc": 5055,
+                                        "htp_collapse_alloc": 66,
+                                        "page_scan": 3755,
+                                        "slab_unreclaimable": {
+                                            "bytes": 1031144
+                                        },
+                                        "file_mapped": {
+                                            "bytes": 126976
+                                        },
+                                        "page_faults": 11861741,
+                                        "slab_reclaimable": {
+                                            "bytes": 46048
+                                        },
+                                        "file_writeback": {
+                                            "bytes": 0
+                                        },
+                                        "file_dirty": {
+                                            "bytes": 0
+                                        },
+                                        "page_activate": 0,
+                                        "unevictable": {
+                                            "bytes": 0
+                                        },
+                                        "workingset_restore_anon": 0,
+                                        "swap_cached": {
+                                            "bytes": 0
+                                        },
+                                        "workingset_activate_anon": 0,
+                                        "shmem": {
+                                            "bytes": 0
+                                        },
+                                        "workingset_restore_file": 0,
+                                        "page_refill": 9,
+                                        "page_lazy_freed": 0,
+                                        "page_lazy_free": 0,
+                                        "active_file": {
+                                            "bytes": 208896
+                                        },
+                                        "workingset_refault_file": 127,
+                                        "page_deactivate": 0,
+                                        "active_anon": {
+                                            "bytes": 481017856
+                                        },
+                                        "major_page_faults": 2,
+                                        "workingset_refault_anon": 0,
+                                        "slab": {
+                                            "bytes": 1077192
+                                        },
+                                        "workingset_activate_file": 127,
+                                        "kernel_stack": {
+                                            "bytes": 294912
+                                        },
+                                        "workingset_node_reclaim": 0,
+                                        "page_tables": {
+                                            "bytes": 13291520
+                                        },
+                                        "inactive_anon": {
+                                            "bytes": 31469568
+                                        },
+                                        "file": {
+                                            "bytes": 241664
+                                        },
+                                        "anon_thp": {
+                                            "bytes": 111149056
+                                        },
+                                        "shmem_thp": {
+                                            "bytes": 0
+                                        },
+                                        "page_steal": 3755
+                                    }
+                                }
+                            },
+                            "fd": {
+                                "open": 32,
+                                "limit": {
+                                    "hard": 524288,
+                                    "soft": 524288
+                                }
+                            }
+                        }
+                    },
+                    "host": {
+                        "ip": [
+                            "10.0.0.5",
+                            "fe80::6245:bdff:fe8f:432e"
+                        ],
+                        "os": {
+                            "kernel": "6.8.0-1021-azure",
+                            "type": "linux",
+                            "platform": "ubuntu",
+                            "family": "debian",
+                            "version": "24.04.2 LTS (Noble Numbat)",
+                            "name": "Ubuntu",
+                            "codename": "noble"
+                        },
+                        "containerized": false,
+                        "mac": [
+                            "60-45-BD-8F-43-2E"
+                        ],
+                        "architecture": "x86_64",
+                        "name": "app-1",
+                        "id": "ea41015ba9df4907a4e111a54ee2ee3b",
+                        "hostname": "APP-1"
+                    },
+                    "@timestamp": "2025-02-23T18:00:02.414Z",
+                    "tags": [
+                        "beats_input_raw_event"
+                    ],
+                    "source": "metricbeat"
+                }
+            },
+            {
+                "_index": "metricbeat-2025.02.23",
+                "_id": "P3f3M5UBeuJAdh3UfQva",
+                "_score": 2.1384573,
+                "_source": {
+                    "@version": "1",
+                    "filter_match_status": "no match",
+                    "service": {
+                        "type": "system"
+                    },
+                    "agent": {
+                        "name": "APP-1",
+                        "id": "0e205494-aecf-4a97-90cf-290f0b1b7e0b",
+                        "version": "8.17.2",
+                        "type": "metricbeat",
+                        "ephemeral_id": "d038c50e-604f-4012-bec6-e8a158ebac0d"
+                    },
+                    "cloud": {
+                        "provider": "azure",
+                        "region": "westeurope",
+                        "service": {
+                            "name": "Virtual Machines"
+                        },
+                        "machine": {
+                            "type": "Standard_B2s"
+                        },
+                        "account": {
+                            "id": "8df27c78-5714-4de0-99d4-367baf0f8b8a"
+                        },
+                        "instance": {
+                            "name": "APP-1",
+                            "id": "118b0557-8885-4da8-b766-4449eb2e1f13"
+                        }
+                    },
+                    "event": {
+                        "duration": 128903,
+                        "module": "system",
+                        "dataset": "system.network"
+                    },
+                    "metricset": {
+                        "name": "network",
+                        "period": 10000
+                    },
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "host": {
+                        "ip": [
+                            "10.0.0.5",
+                            "fe80::6245:bdff:fe8f:432e"
+                        ],
+                        "os": {
+                            "kernel": "6.8.0-1021-azure",
+                            "type": "linux",
+                            "platform": "ubuntu",
+                            "family": "debian",
+                            "version": "24.04.2 LTS (Noble Numbat)",
+                            "name": "Ubuntu",
+                            "codename": "noble"
+                        },
+                        "containerized": false,
+                        "mac": [
+                            "60-45-BD-8F-43-2E"
+                        ],
+                        "architecture": "x86_64",
+                        "name": "app-1",
+                        "id": "ea41015ba9df4907a4e111a54ee2ee3b",
+                        "network": {
+                            "ingress": {
+                                "bytes": 25369134,
+                                "packets": 13179
+                            },
+                            "egress": {
+                                "bytes": 79357568,
+                                "packets": 16875
+                            }
+                        },
+                        "hostname": "APP-1"
+                    },
+                    "@timestamp": "2025-02-23T18:00:02.362Z",
+                    "tags": [
+                        "beats_input_raw_event"
+                    ],
+                    "source": "metricbeat"
+                }
+            },
+            {
+                "_index": "metricbeat-2025.02.23",
+                "_id": "SXf3M5UBeuJAdh3UfQva",
+                "_score": 2.1384573,
+                "_source": {
+                    "@version": "1",
+                    "filter_match_status": "no match",
+                    "process": {
+                        "state": "sleeping",
+                        "cpu": {
+                            "pct": 0.009,
+                            "start_time": "2025-02-20T13:57:20.000Z"
+                        },
+                        "parent": {
+                            "pid": 14834
+                        },
+                        "working_directory": "/opt/zeek/spool/zeek",
+                        "args": [
+                            "/opt/zeek/bin/zeek",
+                            "-i",
+                            "eth0",
+                            "-U",
+                            ".status",
+                            "-p",
+                            "zeekctl",
+                            "-p",
+                            "zeekctl-live",
+                            "-p",
+                            "standalone",
+                            "-p",
+                            "local",
+                            "-p",
+                            "zeek",
+                            "local.zeek",
+                            "zeekctl",
+                            "zeekctl/standalone",
+                            "zeekctl/auto"
+                        ],
+                        "pid": 14840,
+                        "command_line": "/opt/zeek/bin/zeek -i eth0 -U .status -p zeekctl -p zeekctl-live -p standalone -p local -p zeek local.zeek zeekctl zeekctl/standalone zeekctl/auto",
+                        "name": "zeek",
+                        "memory": {
+                            "pct": 0.0672
+                        },
+                        "pgid": 14661,
+                        "executable": "/opt/zeek/bin/zeek"
+                    },
+                    "service": {
+                        "type": "system"
+                    },
+                    "agent": {
+                        "name": "APP-1",
+                        "id": "0e205494-aecf-4a97-90cf-290f0b1b7e0b",
+                        "version": "8.17.2",
+                        "type": "metricbeat",
+                        "ephemeral_id": "d038c50e-604f-4012-bec6-e8a158ebac0d"
+                    },
+                    "cloud": {
+                        "provider": "azure",
+                        "region": "westeurope",
+                        "service": {
+                            "name": "Virtual Machines"
+                        },
+                        "machine": {
+                            "type": "Standard_B2s"
+                        },
+                        "account": {
+                            "id": "8df27c78-5714-4de0-99d4-367baf0f8b8a"
+                        },
+                        "instance": {
+                            "name": "APP-1",
+                            "id": "118b0557-8885-4da8-b766-4449eb2e1f13"
+                        }
+                    },
+                    "event": {
+                        "duration": 58710672,
+                        "module": "system",
+                        "dataset": "system.process"
+                    },
+                    "metricset": {
+                        "name": "process",
+                        "period": 10000
+                    },
+                    "user": {
+                        "name": "root"
+                    },
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "system": {
+                        "process": {
+                            "io": {
+                                "write_bytes": 391163904,
+                                "write_char": 200353259,
+                                "read_char": 11558360,
+                                "read_ops": 9369073,
+                                "write_ops": 6316204,
+                                "cancelled_write_bytes": 4096,
+                                "read_bytes": 155648
+                            },
+                            "cmdline": "/opt/zeek/bin/zeek -i eth0 -U .status -p zeekctl -p zeekctl-live -p standalone -p local -p zeek local.zeek zeekctl zeekctl/standalone zeekctl/auto",
+                            "cpu": {
+                                "start_time": "2025-02-20T13:57:20.000Z",
+                                "total": {
+                                    "value": 1148710.0,
+                                    "norm": {
+                                        "pct": 0.009
+                                    },
+                                    "pct": 0.018
+                                }
+                            },
+                            "state": "sleeping",
+                            "num_threads": 32,
+                            "memory": {
+                                "size": 1565298688,
+                                "rss": {
+                                    "bytes": 272171008,
+                                    "pct": 0.0672
+                                },
+                                "share": 164233216
+                            },
+                            "cgroup": {
+                                "id": "session-1.scope",
+                                "cpu": {
+                                    "stats": {
+                                        "usage": {
+                                            "norm": {
+                                                "pct": 0.0001
+                                            },
+                                            "pct": 0.0001,
+                                            "ns": 1260458880
+                                        },
+                                        "periods": 0,
+                                        "user": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0.0001,
+                                            "ns": 729151957
+                                        },
+                                        "throttled": {
+                                            "us": 0,
+                                            "periods": 0
+                                        },
+                                        "system": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0.0001,
+                                            "ns": 531306922
+                                        }
+                                    },
+                                    "id": "session-1.scope",
+                                    "path": "/user.slice/user-1000.slice/session-1.scope",
+                                    "pressure": {
+                                        "some": {
+                                            "60": {
+                                                "pct": 0.9
+                                            },
+                                            "300": {
+                                                "pct": 0.18
+                                            },
+                                            "10": {
+                                                "pct": 4.72
+                                            },
+                                            "total": 242412038
+                                        },
+                                        "full": {
+                                            "60": {
+                                                "pct": 0.31
+                                            },
+                                            "300": {
+                                                "pct": 0.06
+                                            },
+                                            "10": {
+                                                "pct": 1.46
+                                            },
+                                            "total": 170699917
+                                        }
+                                    }
+                                },
+                                "path": "/user.slice/user-1000.slice/session-1.scope",
+                                "memory": {
+                                    "stats": {
+                                        "inactive_file": {
+                                            "bytes": 357130240
+                                        },
+                                        "file_thp": {
+                                            "bytes": 0
+                                        },
+                                        "per_cpu": {
+                                            "bytes": 656
+                                        },
+                                        "sock": {
+                                            "bytes": 0
+                                        },
+                                        "anon": {
+                                            "bytes": 115449856
+                                        },
+                                        "thp_fault_alloc": 551,
+                                        "htp_collapse_alloc": 44,
+                                        "page_scan": 227132,
+                                        "slab_unreclaimable": {
+                                            "bytes": 998608
+                                        },
+                                        "page_faults": 9681266,
+                                        "file_mapped": {
+                                            "bytes": 219504640
+                                        },
+                                        "slab_reclaimable": {
+                                            "bytes": 47550272
+                                        },
+                                        "file_writeback": {
+                                            "bytes": 0
+                                        },
+                                        "file_dirty": {
+                                            "bytes": 1064960
+                                        },
+                                        "page_activate": 1604,
+                                        "unevictable": {
+                                            "bytes": 2056192
+                                        },
+                                        "workingset_restore_anon": 0,
+                                        "swap_cached": {
+                                            "bytes": 0
+                                        },
+                                        "workingset_activate_anon": 0,
+                                        "shmem": {
+                                            "bytes": 8192
+                                        },
+                                        "workingset_restore_file": 2,
+                                        "page_refill": 58458,
+                                        "page_lazy_freed": 0,
+                                        "page_lazy_free": 0,
+                                        "workingset_refault_file": 2,
+                                        "active_file": {
+                                            "bytes": 233766912
+                                        },
+                                        "page_deactivate": 0,
+                                        "active_anon": {
+                                            "bytes": 23158784
+                                        },
+                                        "major_page_faults": 328,
+                                        "workingset_refault_anon": 0,
+                                        "workingset_activate_file": 2,
+                                        "slab": {
+                                            "bytes": 48548880
+                                        },
+                                        "workingset_node_reclaim": 0,
+                                        "kernel_stack": {
+                                            "bytes": 638976
+                                        },
+                                        "inactive_anon": {
+                                            "bytes": 92299264
+                                        },
+                                        "page_tables": {
+                                            "bytes": 1388544
+                                        },
+                                        "file": {
+                                            "bytes": 592961536
+                                        },
+                                        "anon_thp": {
+                                            "bytes": 102760448
+                                        },
+                                        "page_steal": 184581,
+                                        "shmem_thp": {
+                                            "bytes": 0
+                                        }
+                                    },
+                                    "id": "session-1.scope",
+                                    "path": "/user.slice/user-1000.slice/session-1.scope",
+                                    "mem": {
+                                        "usage": {
+                                            "bytes": 759144448
+                                        },
+                                        "low": {
+                                            "bytes": 0
+                                        },
+                                        "events": {
+                                            "oom_kill": 0,
+                                            "low": 0,
+                                            "max": 0,
+                                            "high": 0,
+                                            "oom": 0
+                                        }
+                                    },
+                                    "memsw": {
+                                        "usage": {
+                                            "bytes": 0
+                                        },
+                                        "low": {
+                                            "bytes": 0
+                                        },
+                                        "events": {
+                                            "max": 0,
+                                            "fail": 0,
+                                            "high": 0
+                                        }
+                                    }
+                                },
+                                "cgroups_version": 2
+                            },
+                            "fd": {
+                                "open": 64,
+                                "limit": {
+                                    "hard": 1048576,
+                                    "soft": 1024
+                                }
+                            }
+                        }
+                    },
+                    "host": {
+                        "ip": [
+                            "10.0.0.5",
+                            "fe80::6245:bdff:fe8f:432e"
+                        ],
+                        "os": {
+                            "kernel": "6.8.0-1021-azure",
+                            "type": "linux",
+                            "platform": "ubuntu",
+                            "family": "debian",
+                            "version": "24.04.2 LTS (Noble Numbat)",
+                            "name": "Ubuntu",
+                            "codename": "noble"
+                        },
+                        "containerized": false,
+                        "mac": [
+                            "60-45-BD-8F-43-2E"
+                        ],
+                        "architecture": "x86_64",
+                        "name": "app-1",
+                        "id": "ea41015ba9df4907a4e111a54ee2ee3b",
+                        "hostname": "APP-1"
+                    },
+                    "@timestamp": "2025-02-23T18:00:02.414Z",
+                    "tags": [
+                        "beats_input_raw_event"
+                    ],
+                    "source": "metricbeat"
+                }
+            },
+            {
+                "_index": "metricbeat-2025.02.23",
+                "_id": "QXf3M5UBeuJAdh3UfQva",
+                "_score": 2.1384573,
+                "_source": {
+                    "@version": "1",
+                    "filter_match_status": "no match",
+                    "service": {
+                        "type": "system"
+                    },
+                    "agent": {
+                        "version": "8.17.2",
+                        "id": "0e205494-aecf-4a97-90cf-290f0b1b7e0b",
+                        "ephemeral_id": "d038c50e-604f-4012-bec6-e8a158ebac0d",
+                        "name": "APP-1",
+                        "type": "metricbeat"
+                    },
+                    "cloud": {
+                        "provider": "azure",
+                        "region": "westeurope",
+                        "service": {
+                            "name": "Virtual Machines"
+                        },
+                        "machine": {
+                            "type": "Standard_B2s"
+                        },
+                        "account": {
+                            "id": "8df27c78-5714-4de0-99d4-367baf0f8b8a"
+                        },
+                        "instance": {
+                            "name": "APP-1",
+                            "id": "118b0557-8885-4da8-b766-4449eb2e1f13"
+                        }
+                    },
+                    "event": {
+                        "duration": 5743444,
+                        "module": "system",
+                        "dataset": "system.socket.summary"
+                    },
+                    "metricset": {
+                        "name": "socket_summary",
+                        "period": 10000
+                    },
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "system": {
+                        "socket": {
+                            "summary": {
+                                "tcp": {
+                                    "all": {
+                                        "syn_recv": 0,
+                                        "count": 43,
+                                        "listening": 10,
+                                        "established": 20,
+                                        "time_wait": 13,
+                                        "syn_sent": 0,
+                                        "close_wait": 0,
+                                        "closing": 0,
+                                        "fin_wait1": 0,
+                                        "fin_wait2": 0,
+                                        "last_ack": 0,
+                                        "orphan": 0
+                                    },
+                                    "memory": 5058560
+                                },
+                                "udp": {
+                                    "all": {
+                                        "count": 5
+                                    },
+                                    "memory": 0
+                                },
+                                "all": {
+                                    "count": 48,
+                                    "listening": 10
+                                }
+                            }
+                        }
+                    },
+                    "host": {
+                        "ip": [
+                            "10.0.0.5",
+                            "fe80::6245:bdff:fe8f:432e"
+                        ],
+                        "os": {
+                            "kernel": "6.8.0-1021-azure",
+                            "type": "linux",
+                            "platform": "ubuntu",
+                            "family": "debian",
+                            "name": "Ubuntu",
+                            "version": "24.04.2 LTS (Noble Numbat)",
+                            "codename": "noble"
+                        },
+                        "containerized": false,
+                        "mac": [
+                            "60-45-BD-8F-43-2E"
+                        ],
+                        "architecture": "x86_64",
+                        "name": "app-1",
+                        "id": "ea41015ba9df4907a4e111a54ee2ee3b",
+                        "hostname": "APP-1"
+                    },
+                    "@timestamp": "2025-02-23T18:00:02.371Z",
+                    "tags": [
+                        "beats_input_raw_event"
+                    ],
+                    "source": "metricbeat"
+                }
+            },
+            {
+                "_index": "metricbeat-2025.02.23",
+                "_id": "Qnf3M5UBeuJAdh3UfQva",
+                "_score": 2.1384573,
+                "_source": {
+                    "@version": "1",
+                    "filter_match_status": "no match",
+                    "process": {
+                        "state": "sleeping",
+                        "cpu": {
+                            "pct": 0.0225,
+                            "start_time": "2025-02-21T06:04:42.000Z"
+                        },
+                        "parent": {
+                            "pid": 1
+                        },
+                        "working_directory": "/var/lib/mysql",
+                        "args": [
+                            "/usr/sbin/mysqld"
+                        ],
+                        "pid": 28162,
+                        "command_line": "/usr/sbin/mysqld",
+                        "name": "mysqld",
+                        "memory": {
+                            "pct": 0.1295
+                        },
+                        "executable": "/usr/sbin/mysqld",
+                        "pgid": 28162
+                    },
+                    "service": {
+                        "type": "system"
+                    },
+                    "agent": {
+                        "name": "APP-1",
+                        "version": "8.17.2",
+                        "ephemeral_id": "d038c50e-604f-4012-bec6-e8a158ebac0d",
+                        "type": "metricbeat",
+                        "id": "0e205494-aecf-4a97-90cf-290f0b1b7e0b"
+                    },
+                    "cloud": {
+                        "provider": "azure",
+                        "region": "westeurope",
+                        "service": {
+                            "name": "Virtual Machines"
+                        },
+                        "machine": {
+                            "type": "Standard_B2s"
+                        },
+                        "account": {
+                            "id": "8df27c78-5714-4de0-99d4-367baf0f8b8a"
+                        },
+                        "instance": {
+                            "name": "APP-1",
+                            "id": "118b0557-8885-4da8-b766-4449eb2e1f13"
+                        }
+                    },
+                    "event": {
+                        "duration": 58707072,
+                        "module": "system",
+                        "dataset": "system.process"
+                    },
+                    "metricset": {
+                        "name": "process",
+                        "period": 10000
+                    },
+                    "user": {
+                        "name": "mysql"
+                    },
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "system": {
+                        "process": {
+                            "io": {
+                                "write_bytes": 15184261120,
+                                "write_char": 6789457752,
+                                "read_char": 27009311,
+                                "read_ops": 1266,
+                                "write_ops": 895627,
+                                "cancelled_write_bytes": 16384,
+                                "read_bytes": 28712960
+                            },
+                            "state": "sleeping",
+                            "num_threads": 47,
+                            "cmdline": "/usr/sbin/mysqld",
+                            "cpu": {
+                                "start_time": "2025-02-21T06:04:42.000Z",
+                                "total": {
+                                    "value": 1871840.0,
+                                    "norm": {
+                                        "pct": 0.0225
+                                    },
+                                    "pct": 0.045
+                                }
+                            },
+                            "memory": {
+                                "size": 1851850752,
+                                "rss": {
+                                    "bytes": 524337152,
+                                    "pct": 0.1295
+                                },
+                                "share": 38928384
+                            },
+                            "cgroup": {
+                                "id": "mysql.service",
+                                "cpu": {
+                                    "id": "mysql.service",
+                                    "stats": {
+                                        "usage": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0,
+                                            "ns": 1871937616
+                                        },
+                                        "user": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0,
+                                            "ns": 1305758770
+                                        },
+                                        "system": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0,
+                                            "ns": 566178845
+                                        }
+                                    },
+                                    "path": "/system.slice/mysql.service",
+                                    "pressure": {
+                                        "some": {
+                                            "60": {
+                                                "pct": 1.47
+                                            },
+                                            "300": {
+                                                "pct": 1.12
+                                            },
+                                            "10": {
+                                                "pct": 2.01
+                                            },
+                                            "total": 637710283
+                                        },
+                                        "full": {
+                                            "60": {
+                                                "pct": 1.26
+                                            },
+                                            "300": {
+                                                "pct": 0.95
+                                            },
+                                            "10": {
+                                                "pct": 1.63
+                                            },
+                                            "total": 582042426
+                                        }
+                                    }
+                                },
+                                "memory": {
+                                    "id": "mysql.service",
+                                    "memsw": {
+                                        "low": {
+                                            "bytes": 0
+                                        },
+                                        "usage": {
+                                            "bytes": 0
+                                        },
+                                        "events": {
+                                            "max": 0,
+                                            "fail": 0,
+                                            "high": 0
+                                        }
+                                    },
+                                    "path": "/system.slice/mysql.service",
+                                    "mem": {
+                                        "low": {
+                                            "bytes": 0
+                                        },
+                                        "usage": {
+                                            "bytes": 527507456
+                                        },
+                                        "events": {
+                                            "low": 0,
+                                            "max": 0,
+                                            "oom_kill": 0,
+                                            "high": 0,
+                                            "oom": 0
+                                        }
+                                    },
+                                    "stats": {
+                                        "anon": {
+                                            "bytes": 485445632
+                                        },
+                                        "sock": {
+                                            "bytes": 0
+                                        },
+                                        "per_cpu": {
+                                            "bytes": 64
+                                        },
+                                        "page_steal": 82131,
+                                        "file_thp": {
+                                            "bytes": 0
+                                        },
+                                        "thp_fault_alloc": 146,
+                                        "htp_collapse_alloc": 73,
+                                        "page_scan": 82177,
+                                        "slab_unreclaimable": {
+                                            "bytes": 700584
+                                        },
+                                        "page_faults": 59160,
+                                        "file_mapped": {
+                                            "bytes": 241664
+                                        },
+                                        "slab_reclaimable": {
+                                            "bytes": 1721408
+                                        },
+                                        "file_writeback": {
+                                            "bytes": 0
+                                        },
+                                        "file_dirty": {
+                                            "bytes": 36864
+                                        },
+                                        "page_activate": 0,
+                                        "unevictable": {
+                                            "bytes": 0
+                                        },
+                                        "workingset_restore_anon": 0,
+                                        "swap_cached": {
+                                            "bytes": 0
+                                        },
+                                        "shmem": {
+                                            "bytes": 8192
+                                        },
+                                        "workingset_activate_anon": 0,
+                                        "workingset_restore_file": 29,
+                                        "page_lazy_freed": 0,
+                                        "page_refill": 70,
+                                        "page_lazy_free": 0,
+                                        "active_file": {
+                                            "bytes": 622592
+                                        },
+                                        "workingset_refault_file": 45,
+                                        "page_deactivate": 0,
+                                        "active_anon": {
+                                            "bytes": 485453824
+                                        },
+                                        "major_page_faults": 3,
+                                        "slab": {
+                                            "bytes": 2421992
+                                        },
+                                        "workingset_activate_file": 45,
+                                        "workingset_refault_anon": 0,
+                                        "workingset_node_reclaim": 0,
+                                        "page_tables": {
+                                            "bytes": 1486848
+                                        },
+                                        "kernel_stack": {
+                                            "bytes": 753664
+                                        },
+                                        "inactive_anon": {
+                                            "bytes": 0
+                                        },
+                                        "anon_thp": {
+                                            "bytes": 417333248
+                                        },
+                                        "file": {
+                                            "bytes": 37388288
+                                        },
+                                        "shmem_thp": {
+                                            "bytes": 0
+                                        },
+                                        "inactive_file": {
+                                            "bytes": 36757504
+                                        }
+                                    }
+                                },
+                                "cgroups_version": 2,
+                                "path": "/system.slice/mysql.service"
+                            },
+                            "fd": {
+                                "open": 51,
+                                "limit": {
+                                    "hard": 10000,
+                                    "soft": 10000
+                                }
+                            }
+                        }
+                    },
+                    "host": {
+                        "ip": [
+                            "10.0.0.5",
+                            "fe80::6245:bdff:fe8f:432e"
+                        ],
+                        "os": {
+                            "kernel": "6.8.0-1021-azure",
+                            "type": "linux",
+                            "platform": "ubuntu",
+                            "family": "debian",
+                            "name": "Ubuntu",
+                            "version": "24.04.2 LTS (Noble Numbat)",
+                            "codename": "noble"
+                        },
+                        "containerized": false,
+                        "mac": [
+                            "60-45-BD-8F-43-2E"
+                        ],
+                        "architecture": "x86_64",
+                        "name": "app-1",
+                        "id": "ea41015ba9df4907a4e111a54ee2ee3b",
+                        "hostname": "APP-1"
+                    },
+                    "@timestamp": "2025-02-23T18:00:02.414Z",
+                    "tags": [
+                        "beats_input_raw_event"
+                    ],
+                    "source": "metricbeat"
+                }
+            },
+            {
+                "_index": "metricbeat-2025.02.23",
+                "_id": "Q3f3M5UBeuJAdh3UfQva",
+                "_score": 2.1384573,
+                "_source": {
+                    "@version": "1",
+                    "filter_match_status": "no match",
+                    "process": {
+                        "state": "sleeping",
+                        "cpu": {
+                            "pct": 0.002,
+                            "start_time": "2025-02-21T06:04:39.000Z"
+                        },
+                        "working_directory": "/",
+                        "parent": {
+                            "pid": 1
+                        },
+                        "args": [
+                            "/usr/lib/systemd/systemd-journald"
+                        ],
+                        "pid": 27947,
+                        "command_line": "/usr/lib/systemd/systemd-journald",
+                        "name": "systemd-journal",
+                        "memory": {
+                            "pct": 0.0437
+                        },
+                        "executable": "/usr/lib/systemd/systemd-journald",
+                        "pgid": 27947
+                    },
+                    "service": {
+                        "type": "system"
+                    },
+                    "agent": {
+                        "version": "8.17.2",
+                        "id": "0e205494-aecf-4a97-90cf-290f0b1b7e0b",
+                        "ephemeral_id": "d038c50e-604f-4012-bec6-e8a158ebac0d",
+                        "name": "APP-1",
+                        "type": "metricbeat"
+                    },
+                    "cloud": {
+                        "provider": "azure",
+                        "region": "westeurope",
+                        "service": {
+                            "name": "Virtual Machines"
+                        },
+                        "machine": {
+                            "type": "Standard_B2s"
+                        },
+                        "account": {
+                            "id": "8df27c78-5714-4de0-99d4-367baf0f8b8a"
+                        },
+                        "instance": {
+                            "name": "APP-1",
+                            "id": "118b0557-8885-4da8-b766-4449eb2e1f13"
+                        }
+                    },
+                    "event": {
+                        "duration": 59336488,
+                        "module": "system",
+                        "dataset": "system.process"
+                    },
+                    "metricset": {
+                        "name": "process",
+                        "period": 10000
+                    },
+                    "user": {
+                        "name": "root"
+                    },
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "system": {
+                        "process": {
+                            "state": "sleeping",
+                            "cmdline": "/usr/lib/systemd/systemd-journald",
+                            "num_threads": 1,
+                            "cpu": {
+                                "start_time": "2025-02-21T06:04:39.000Z",
+                                "total": {
+                                    "value": 138450,
+                                    "norm": {
+                                        "pct": 0.002
+                                    },
+                                    "pct": 0.004
+                                }
+                            },
+                            "io": {
+                                "write_bytes": 5990240256,
+                                "write_char": 118188,
+                                "read_char": 542404659,
+                                "read_ops": 3033632,
+                                "write_ops": 564,
+                                "cancelled_write_bytes": 0,
+                                "read_bytes": 647168
+                            },
+                            "memory": {
+                                "size": 249331712,
+                                "rss": {
+                                    "bytes": 176926720,
+                                    "pct": 0.0437
+                                },
+                                "share": 175484928
+                            },
+                            "cgroup": {
+                                "id": "systemd-journald.service",
+                                "cpu": {
+                                    "stats": {
+                                        "usage": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0,
+                                            "ns": 138486564
+                                        },
+                                        "user": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0,
+                                            "ns": 76778643
+                                        },
+                                        "system": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0,
+                                            "ns": 61707920
+                                        }
+                                    },
+                                    "id": "systemd-journald.service",
+                                    "path": "/system.slice/systemd-journald.service",
+                                    "pressure": {
+                                        "full": {
+                                            "60": {
+                                                "pct": 0
+                                            },
+                                            "300": {
+                                                "pct": 0
+                                            },
+                                            "10": {
+                                                "pct": 0
+                                            },
+                                            "total": 30670934
+                                        },
+                                        "some": {
+                                            "60": {
+                                                "pct": 0
+                                            },
+                                            "300": {
+                                                "pct": 0
+                                            },
+                                            "10": {
+                                                "pct": 0
+                                            },
+                                            "total": 30727687
+                                        }
+                                    }
+                                },
+                                "path": "/system.slice/systemd-journald.service",
+                                "memory": {
+                                    "memsw": {
+                                        "usage": {
+                                            "bytes": 0
+                                        },
+                                        "low": {
+                                            "bytes": 0
+                                        },
+                                        "events": {
+                                            "max": 0,
+                                            "fail": 0,
+                                            "high": 0
+                                        }
+                                    },
+                                    "stats": {
+                                        "anon": {
+                                            "bytes": 1507328
+                                        },
+                                        "file_thp": {
+                                            "bytes": 0
+                                        },
+                                        "shmem_thp": {
+                                            "bytes": 0
+                                        },
+                                        "page_steal": 0,
+                                        "per_cpu": {
+                                            "bytes": 2464
+                                        },
+                                        "thp_fault_alloc": 0,
+                                        "htp_collapse_alloc": 0,
+                                        "page_scan": 0,
+                                        "slab_unreclaimable": {
+                                            "bytes": 117472
+                                        },
+                                        "page_faults": 1484297,
+                                        "file_mapped": {
+                                            "bytes": 102715392
+                                        },
+                                        "slab_reclaimable": {
+                                            "bytes": 17808304
+                                        },
+                                        "file_writeback": {
+                                            "bytes": 0
+                                        },
+                                        "file_dirty": {
+                                            "bytes": 1601536
+                                        },
+                                        "page_activate": 0,
+                                        "unevictable": {
+                                            "bytes": 0
+                                        },
+                                        "workingset_restore_anon": 0,
+                                        "swap_cached": {
+                                            "bytes": 0
+                                        },
+                                        "workingset_activate_anon": 0,
+                                        "shmem": {
+                                            "bytes": 36864
+                                        },
+                                        "workingset_restore_file": 0,
+                                        "page_lazy_freed": 0,
+                                        "page_refill": 0,
+                                        "workingset_refault_file": 0,
+                                        "active_file": {
+                                            "bytes": 625319936
+                                        },
+                                        "page_lazy_free": 0,
+                                        "page_deactivate": 0,
+                                        "active_anon": {
+                                            "bytes": 1523712
+                                        },
+                                        "workingset_activate_file": 0,
+                                        "workingset_refault_anon": 0,
+                                        "major_page_faults": 477,
+                                        "slab": {
+                                            "bytes": 17925776
+                                        },
+                                        "kernel_stack": {
+                                            "bytes": 0
+                                        },
+                                        "page_tables": {
+                                            "bytes": 503808
+                                        },
+                                        "inactive_anon": {
+                                            "bytes": 20480
+                                        },
+                                        "workingset_node_reclaim": 0,
+                                        "anon_thp": {
+                                            "bytes": 0
+                                        },
+                                        "file": {
+                                            "bytes": 625831936
+                                        },
+                                        "inactive_file": {
+                                            "bytes": 475136
+                                        },
+                                        "sock": {
+                                            "bytes": 0
+                                        }
+                                    },
+                                    "id": "systemd-journald.service",
+                                    "mem": {
+                                        "usage": {
+                                            "bytes": 645857280
+                                        },
+                                        "low": {
+                                            "bytes": 0
+                                        },
+                                        "events": {
+                                            "low": 0,
+                                            "max": 0,
+                                            "oom_kill": 0,
+                                            "high": 0,
+                                            "oom": 0
+                                        }
+                                    },
+                                    "path": "/system.slice/systemd-journald.service"
+                                },
+                                "cgroups_version": 2
+                            },
+                            "fd": {
+                                "open": 42,
+                                "limit": {
+                                    "hard": 524288,
+                                    "soft": 524288
+                                }
+                            }
+                        }
+                    },
+                    "host": {
+                        "ip": [
+                            "10.0.0.5",
+                            "fe80::6245:bdff:fe8f:432e"
+                        ],
+                        "os": {
+                            "kernel": "6.8.0-1021-azure",
+                            "type": "linux",
+                            "platform": "ubuntu",
+                            "family": "debian",
+                            "name": "Ubuntu",
+                            "version": "24.04.2 LTS (Noble Numbat)",
+                            "codename": "noble"
+                        },
+                        "containerized": false,
+                        "mac": [
+                            "60-45-BD-8F-43-2E"
+                        ],
+                        "architecture": "x86_64",
+                        "name": "app-1",
+                        "id": "ea41015ba9df4907a4e111a54ee2ee3b",
+                        "hostname": "APP-1"
+                    },
+                    "@timestamp": "2025-02-23T18:00:02.414Z",
+                    "tags": [
+                        "beats_input_raw_event"
+                    ],
+                    "source": "metricbeat"
+                }
+            },
+            {
+                "_index": "metricbeat-2025.02.23",
+                "_id": "RHf3M5UBeuJAdh3UfQva",
+                "_score": 2.1384573,
+                "_source": {
+                    "@version": "1",
+                    "filter_match_status": "no match",
+                    "service": {
+                        "type": "system"
+                    },
+                    "agent": {
+                        "version": "8.17.2",
+                        "id": "0e205494-aecf-4a97-90cf-290f0b1b7e0b",
+                        "ephemeral_id": "d038c50e-604f-4012-bec6-e8a158ebac0d",
+                        "type": "metricbeat",
+                        "name": "APP-1"
+                    },
+                    "cloud": {
+                        "provider": "azure",
+                        "region": "westeurope",
+                        "service": {
+                            "name": "Virtual Machines"
+                        },
+                        "machine": {
+                            "type": "Standard_B2s"
+                        },
+                        "account": {
+                            "id": "8df27c78-5714-4de0-99d4-367baf0f8b8a"
+                        },
+                        "instance": {
+                            "name": "APP-1",
+                            "id": "118b0557-8885-4da8-b766-4449eb2e1f13"
+                        }
+                    },
+                    "event": {
+                        "dataset": "system.cpu",
+                        "module": "system",
+                        "duration": 115502
+                    },
+                    "metricset": {
+                        "name": "cpu",
+                        "period": 10000
+                    },
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "system": {
+                        "cpu": {
+                            "nice": {
+                                "pct": 0,
+                                "norm": {
+                                    "pct": 0
+                                }
+                            },
+                            "user": {
+                                "pct": 0.4422,
+                                "norm": {
+                                    "pct": 0.2211
+                                }
+                            },
+                            "cores": 2,
+                            "system": {
+                                "pct": 0.0214,
+                                "norm": {
+                                    "pct": 0.0107
+                                }
+                            },
+                            "irq": {
+                                "pct": 0,
+                                "norm": {
+                                    "pct": 0
+                                }
+                            },
+                            "total": {
+                                "pct": 0.4829,
+                                "norm": {
+                                    "pct": 0.2414
+                                }
+                            },
+                            "steal": {
+                                "pct": 0,
+                                "norm": {
+                                    "pct": 0
+                                }
+                            },
+                            "idle": {
+                                "pct": 1.3897,
+                                "norm": {
+                                    "pct": 0.6949
+                                }
+                            },
+                            "iowait": {
+                                "pct": 0.1274,
+                                "norm": {
+                                    "pct": 0.0637
+                                }
+                            },
+                            "softirq": {
+                                "pct": 0.0194,
+                                "norm": {
+                                    "pct": 0.0097
+                                }
+                            }
+                        }
+                    },
+                    "host": {
+                        "ip": [
+                            "10.0.0.5",
+                            "fe80::6245:bdff:fe8f:432e"
+                        ],
+                        "os": {
+                            "kernel": "6.8.0-1021-azure",
+                            "type": "linux",
+                            "platform": "ubuntu",
+                            "family": "debian",
+                            "version": "24.04.2 LTS (Noble Numbat)",
+                            "name": "Ubuntu",
+                            "codename": "noble"
+                        },
+                        "cpu": {
+                            "usage": 0.2414
+                        },
+                        "containerized": false,
+                        "mac": [
+                            "60-45-BD-8F-43-2E"
+                        ],
+                        "architecture": "x86_64",
+                        "name": "app-1",
+                        "id": "ea41015ba9df4907a4e111a54ee2ee3b",
+                        "hostname": "APP-1"
+                    },
+                    "@timestamp": "2025-02-23T18:00:12.362Z",
+                    "tags": [
+                        "beats_input_raw_event"
+                    ],
+                    "source": "metricbeat"
+                }
+            },
+            {
+                "_index": "metricbeat-2025.02.23",
+                "_id": "RXf3M5UBeuJAdh3UfQva",
+                "_score": 2.1384573,
+                "_source": {
+                    "@version": "1",
+                    "filter_match_status": "no match",
+                    "process": {
+                        "state": "running",
+                        "cpu": {
+                            "pct": 0.0035,
+                            "start_time": "2025-02-20T13:25:39.000Z"
+                        },
+                        "parent": {
+                            "pid": 1
+                        },
+                        "working_directory": "/",
+                        "args": [
+                            "/usr/share/metricbeat/bin/metricbeat",
+                            "--environment",
+                            "systemd",
+                            "-c",
+                            "/etc/metricbeat/metricbeat.yml",
+                            "--path.home",
+                            "/usr/share/metricbeat",
+                            "--path.config",
+                            "/etc/metricbeat",
+                            "--path.data",
+                            "/var/lib/metricbeat",
+                            "--path.logs",
+                            "/var/log/metricbeat"
+                        ],
+                        "pid": 14460,
+                        "command_line": "/usr/share/metricbeat/bin/metricbeat --environment systemd -c /etc/metricbeat/metricbeat.yml --path.home /usr/share/metricbeat --path.config /etc/metricbeat --path.data /var/lib/metricbeat --path.logs /var/log/metricbeat",
+                        "name": "metricbeat",
+                        "memory": {
+                            "pct": 0.0668
+                        },
+                        "executable": "/usr/share/metricbeat/bin/metricbeat",
+                        "pgid": 14460
+                    },
+                    "service": {
+                        "type": "system"
+                    },
+                    "agent": {
+                        "name": "APP-1",
+                        "version": "8.17.2",
+                        "ephemeral_id": "d038c50e-604f-4012-bec6-e8a158ebac0d",
+                        "type": "metricbeat",
+                        "id": "0e205494-aecf-4a97-90cf-290f0b1b7e0b"
+                    },
+                    "cloud": {
+                        "provider": "azure",
+                        "region": "westeurope",
+                        "service": {
+                            "name": "Virtual Machines"
+                        },
+                        "machine": {
+                            "type": "Standard_B2s"
+                        },
+                        "account": {
+                            "id": "8df27c78-5714-4de0-99d4-367baf0f8b8a"
+                        },
+                        "instance": {
+                            "name": "APP-1",
+                            "id": "118b0557-8885-4da8-b766-4449eb2e1f13"
+                        }
+                    },
+                    "event": {
+                        "dataset": "system.process",
+                        "module": "system",
+                        "duration": 59157183
+                    },
+                    "metricset": {
+                        "name": "process",
+                        "period": 10000
+                    },
+                    "user": {
+                        "name": "root"
+                    },
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "system": {
+                        "process": {
+                            "io": {
+                                "write_bytes": 849506304,
+                                "write_char": 937910293,
+                                "read_char": 6229475825,
+                                "read_ops": 57093676,
+                                "write_ops": 262385,
+                                "cancelled_write_bytes": 0,
+                                "read_bytes": 446464
+                            },
+                            "cmdline": "/usr/share/metricbeat/bin/metricbeat --environment systemd -c /etc/metricbeat/metricbeat.yml --path.home /usr/share/metricbeat --path.config /etc/metricbeat --path.data /var/lib/metricbeat --path.logs /var/log/metricbeat",
+                            "cpu": {
+                                "start_time": "2025-02-20T13:25:39.000Z",
+                                "total": {
+                                    "value": 1023060.0,
+                                    "norm": {
+                                        "pct": 0.0035
+                                    },
+                                    "pct": 0.007
+                                }
+                            },
+                            "state": "running",
+                            "num_threads": 9,
+                            "memory": {
+                                "size": 2245365760,
+                                "rss": {
+                                    "pct": 0.0668,
+                                    "bytes": 270520320
+                                },
+                                "share": 95027200
+                            },
+                            "cgroup": {
+                                "id": "metricbeat.service",
+                                "cpu": {
+                                    "stats": {
+                                        "usage": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0,
+                                            "ns": 1023073674
+                                        },
+                                        "user": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0,
+                                            "ns": 689130853
+                                        },
+                                        "system": {
+                                            "norm": {
+                                                "pct": 0
+                                            },
+                                            "pct": 0,
+                                            "ns": 333942820
+                                        }
+                                    },
+                                    "id": "metricbeat.service",
+                                    "path": "/system.slice/metricbeat.service",
+                                    "pressure": {
+                                        "full": {
+                                            "60": {
+                                                "pct": 0
+                                            },
+                                            "300": {
+                                                "pct": 0
+                                            },
+                                            "10": {
+                                                "pct": 0
+                                            },
+                                            "total": 22804842
+                                        },
+                                        "some": {
+                                            "60": {
+                                                "pct": 0.04
+                                            },
+                                            "300": {
+                                                "pct": 0.01
+                                            },
+                                            "10": {
+                                                "pct": 0.02
+                                            },
+                                            "total": 43201396
+                                        }
+                                    }
+                                },
+                                "path": "/system.slice/metricbeat.service",
+                                "memory": {
+                                    "id": "metricbeat.service",
+                                    "memsw": {
+                                        "usage": {
+                                            "bytes": 0
+                                        },
+                                        "low": {
+                                            "bytes": 0
+                                        },
+                                        "events": {
+                                            "max": 0,
+                                            "fail": 0,
+                                            "high": 0
+                                        }
+                                    },
+                                    "path": "/system.slice/metricbeat.service",
+                                    "mem": {
+                                        "usage": {
+                                            "bytes": 194584576
+                                        },
+                                        "low": {
+                                            "bytes": 0
+                                        },
+                                        "events": {
+                                            "oom_kill": 0,
+                                            "low": 0,
+                                            "max": 0,
+                                            "high": 0,
+                                            "oom": 0
+                                        }
+                                    },
+                                    "stats": {
+                                        "anon": {
+                                            "bytes": 175427584
+                                        },
+                                        "per_cpu": {
+                                            "bytes": 208
+                                        },
+                                        "sock": {
+                                            "bytes": 0
+                                        },
+                                        "inactive_file": {
+                                            "bytes": 14540800
+                                        },
+                                        "page_steal": 14272,
+                                        "thp_fault_alloc": 80,
+                                        "htp_collapse_alloc": 637,
+                                        "page_scan": 14272,
+                                        "slab_unreclaimable": {
+                                            "bytes": 166616
+                                        },
+                                        "file_mapped": {
+                                            "bytes": 0
+                                        },
+                                        "page_faults": 111393,
+                                        "slab_reclaimable": {
+                                            "bytes": 1780744
+                                        },
+                                        "file_writeback": {
+                                            "bytes": 0
+                                        },
+                                        "file_dirty": {
+                                            "bytes": 245760
+                                        },
+                                        "page_activate": 0,
+                                        "unevictable": {
+                                            "bytes": 0
+                                        },
+                                        "workingset_restore_anon": 0,
+                                        "swap_cached": {
+                                            "bytes": 0
+                                        },
+                                        "shmem": {
+                                            "bytes": 0
+                                        },
+                                        "workingset_activate_anon": 0,
+                                        "workingset_restore_file": 0,
+                                        "page_refill": 56,
+                                        "page_lazy_freed": 0,
+                                        "workingset_refault_file": 0,
+                                        "page_lazy_free": 0,
+                                        "active_file": {
+                                            "bytes": 65536
+                                        },
+                                        "page_deactivate": 0,
+                                        "active_anon": {
+                                            "bytes": 176672768
+                                        },
+                                        "major_page_faults": 0,
+                                        "workingset_refault_anon": 0,
+                                        "workingset_activate_file": 0,
+                                        "slab": {
+                                            "bytes": 1947360
+                                        },
+                                        "page_tables": {
+                                            "bytes": 954368
+                                        },
+                                        "kernel_stack": {
+                                            "bytes": 131072
+                                        },
+                                        "inactive_anon": {
+                                            "bytes": 0
+                                        },
+                                        "workingset_node_reclaim": 0,
+                                        "anon_thp": {
+                                            "bytes": 142606336
+                                        },
+                                        "file": {
+                                            "bytes": 14610432
+                                        },
+                                        "shmem_thp": {
+                                            "bytes": 0
+                                        },
+                                        "file_thp": {
+                                            "bytes": 0
+                                        }
+                                    }
+                                },
+                                "cgroups_version": 2
+                            },
+                            "fd": {
+                                "open": 13,
+                                "limit": {
+                                    "hard": 524288,
+                                    "soft": 524288
+                                }
+                            }
+                        }
+                    },
+                    "host": {
+                        "ip": [
+                            "10.0.0.5",
+                            "fe80::6245:bdff:fe8f:432e"
+                        ],
+                        "os": {
+                            "kernel": "6.8.0-1021-azure",
+                            "type": "linux",
+                            "platform": "ubuntu",
+                            "family": "debian",
+                            "version": "24.04.2 LTS (Noble Numbat)",
+                            "name": "Ubuntu",
+                            "codename": "noble"
+                        },
+                        "containerized": false,
+                        "mac": [
+                            "60-45-BD-8F-43-2E"
+                        ],
+                        "architecture": "x86_64",
+                        "name": "app-1",
+                        "id": "ea41015ba9df4907a4e111a54ee2ee3b",
+                        "hostname": "APP-1"
+                    },
+                    "@timestamp": "2025-02-23T18:00:02.414Z",
+                    "tags": [
+                        "beats_input_raw_event"
+                    ],
+                    "source": "metricbeat"
+                }
+            },
+            {
+                "_index": "metricbeat-2025.02.23",
+                "_id": "Rnf3M5UBeuJAdh3UfQva",
+                "_score": 2.1384573,
+                "_source": {
+                    "@version": "1",
+                    "filter_match_status": "no match",
+                    "service": {
+                        "type": "system"
+                    },
+                    "agent": {
+                        "name": "APP-1",
+                        "id": "0e205494-aecf-4a97-90cf-290f0b1b7e0b",
+                        "version": "8.17.2",
+                        "type": "metricbeat",
+                        "ephemeral_id": "d038c50e-604f-4012-bec6-e8a158ebac0d"
+                    },
+                    "cloud": {
+                        "provider": "azure",
+                        "region": "westeurope",
+                        "service": {
+                            "name": "Virtual Machines"
+                        },
+                        "machine": {
+                            "type": "Standard_B2s"
+                        },
+                        "account": {
+                            "id": "8df27c78-5714-4de0-99d4-367baf0f8b8a"
+                        },
+                        "instance": {
+                            "name": "APP-1",
+                            "id": "118b0557-8885-4da8-b766-4449eb2e1f13"
+                        }
+                    },
+                    "event": {
+                        "duration": 79602,
+                        "module": "system",
+                        "dataset": "system.network"
+                    },
+                    "metricset": {
+                        "name": "network",
+                        "period": 10000
+                    },
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "host": {
+                        "ip": [
+                            "10.0.0.5",
+                            "fe80::6245:bdff:fe8f:432e"
+                        ],
+                        "os": {
+                            "kernel": "6.8.0-1021-azure",
+                            "type": "linux",
+                            "platform": "ubuntu",
+                            "family": "debian",
+                            "name": "Ubuntu",
+                            "version": "24.04.2 LTS (Noble Numbat)",
+                            "codename": "noble"
+                        },
+                        "containerized": false,
+                        "mac": [
+                            "60-45-BD-8F-43-2E"
+                        ],
+                        "architecture": "x86_64",
+                        "name": "app-1",
+                        "id": "ea41015ba9df4907a4e111a54ee2ee3b",
+                        "network": {
+                            "ingress": {
+                                "bytes": 21688089,
+                                "packets": 13852
+                            },
+                            "egress": {
+                                "bytes": 74994598,
+                                "packets": 18145
+                            }
+                        },
+                        "hostname": "APP-1"
+                    },
+                    "@timestamp": "2025-02-23T18:00:12.362Z",
+                    "tags": [
+                        "beats_input_raw_event"
+                    ],
+                    "source": "metricbeat"
+                }
+            }
+        ]
+    }
+}
