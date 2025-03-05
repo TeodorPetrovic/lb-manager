@@ -235,9 +235,207 @@ def export_cpu_metrics_to_excel():
     else:
         print(f"Error: {response.text}")
 
+def export_ram_metrics_to_excel():
+    print("Fetching RAM metrics for Excel export...")
+    # First save raw JSON for inspection
+    query_memory_metrics()
+    
+    query = {
+        "size": 1000,
+        "sort": [
+            {"@timestamp": {"order": "asc"}}
+        ],
+        "query": {
+            "bool": {
+                "must": [
+                    {"term": {"host.ip": HOST_IP}},
+                    {"term": {"metricset.name": "memory"}},
+                    {"range": {"@timestamp": {"gte": START_TIME, "lte": END_TIME}}}
+                ]
+            }
+        }
+    }
+    
+    response = requests.post(
+        f"{ELASTIC_URL}/_search",
+        json=query,
+        auth=(USERNAME, PASSWORD),
+        verify=False
+    )
+    
+    if response.status_code == 200:
+        result = response.json()
+        hits = result.get('hits', {}).get('hits', [])
+        
+        if not hits:
+            print("No RAM metrics found.")
+            return
+        
+        # Extract data for Excel
+        data = []
+        for hit in hits:
+            try:
+                source = hit.get('_source', {})
+                timestamp = source.get('@timestamp', 'N/A')
+                
+                # Convert UTC ISO timestamp to a more readable format
+                try:
+                    dt = datetime.datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                    formatted_time = dt.strftime('%Y-%m-%d %H:%M:%S')
+                except:
+                    formatted_time = timestamp
+                
+                # Get RAM metrics safely with robust error handling
+                memory_data = source.get('system', {}).get('memory', {})
+                
+                # Initialize variables with default values
+                ram_pct = None
+                total_bytes = None
+                used_bytes = None
+                free_bytes = None
+                
+                # Extract data with safe navigation
+                if isinstance(memory_data, dict):
+                    # Get total bytes - could be at the top level
+                    if 'total' in memory_data:
+                        if isinstance(memory_data['total'], (int, float)):
+                            total_bytes = memory_data['total']
+                    
+                    # Safe extraction of percentage
+                    actual = memory_data.get('actual', {})
+                    if isinstance(actual, dict):
+                        used_data = actual.get('used', {})
+                        if isinstance(used_data, dict):
+                            ram_pct = used_data.get('pct')
+                            used_bytes = used_data.get('bytes')
+                        
+                        free_data = actual.get('free', {})
+                        if isinstance(free_data, dict):
+                            free_bytes = free_data.get('bytes')
+                
+                # Convert percentage to readable format
+                if ram_pct is not None:
+                    ram_pct = ram_pct * 100
+                
+                # Convert bytes to MB for readability
+                if total_bytes is not None:
+                    total_mb = total_bytes / (1024 * 1024)
+                else:
+                    total_mb = None
+                    
+                if used_bytes is not None:
+                    used_mb = used_bytes / (1024 * 1024)
+                else:
+                    used_mb = None
+                    
+                if free_bytes is not None:
+                    free_mb = free_bytes / (1024 * 1024)
+                else:
+                    free_mb = None
+                
+                # Add data row
+                data.append({
+                    'Timestamp': formatted_time,
+                    'RAM Used (%)': ram_pct,
+                    'Total RAM (MB)': total_mb,
+                    'Used RAM (MB)': used_mb,
+                    'Free RAM (MB)': free_mb
+                })
+            except Exception as e:
+                print(f"Error processing hit: {e}")
+                # Optionally print the hit causing the error for debugging
+                # print(json.dumps(hit, indent=2))
+        
+        if not data:
+            print("Could not extract any usable RAM metrics.")
+            return
+        
+        # Create DataFrame and save to Excel
+        df = pd.DataFrame(data)
+        
+        # Calculate averages
+        avg_ram_pct = df['RAM Used (%)'].mean() if df['RAM Used (%)'].count() > 0 else None
+        avg_used_mb = df['Used RAM (MB)'].mean() if df['Used RAM (MB)'].count() > 0 else None
+        avg_free_mb = df['Free RAM (MB)'].mean() if df['Free RAM (MB)'].count() > 0 else None
+        
+        # Add summary row to the dataframe
+        summary_df = pd.DataFrame([{
+            'Timestamp': 'AVERAGE',
+            'RAM Used (%)': avg_ram_pct,
+            'Total RAM (MB)': df['Total RAM (MB)'].dropna().iloc[0] if not df['Total RAM (MB)'].empty and df['Total RAM (MB)'].count() > 0 else None,
+            'Used RAM (MB)': avg_used_mb,
+            'Free RAM (MB)': avg_free_mb
+        }])
+        
+        # Append summary to the main dataframe
+        df = pd.concat([df, summary_df])
+        
+        # Export to Excel
+        excel_file = f"ram_metrics_{HOST_IP.replace('.', '_')}.xlsx"
+        writer = pd.ExcelWriter(excel_file, engine='openpyxl')
+        df.to_excel(writer, index=False, sheet_name='RAM Metrics')
+        
+        # Auto-adjust columns width
+        for column in df:
+            column_length = max(df[column].astype(str).map(len).max(), len(column))
+            col_idx = df.columns.get_loc(column)
+            writer.sheets['RAM Metrics'].column_dimensions[chr(65 + col_idx)].width = column_length + 2
+        
+        writer.close()
+        
+        print(f"\nExported {len(hits)} RAM metrics to {excel_file}")
+        print("\nAverage RAM Utilization:")
+        if avg_ram_pct is not None:
+            print(f"  RAM Used: {avg_ram_pct:.2f}%")
+        if avg_used_mb is not None:
+            print(f"  Used RAM: {avg_used_mb:.2f} MB")
+        if avg_free_mb is not None:
+            print(f"  Free RAM: {avg_free_mb:.2f} MB")
+    else:
+        print(f"Error: {response.text}")
+
+def query_memory_metrics():
+    print("Fetching memory metrics to examine JSON structure...")
+    query = {
+        "size": 100,
+        "query": {
+            "bool": {
+                "must": [
+                    {"term": {"host.ip": HOST_IP}},
+                    {"term": {"metricset.name": "memory"}},
+                    {"range": {"@timestamp": {"gte": START_TIME, "lte": END_TIME}}}
+                ]
+            }
+        }
+    }
+    
+    # Send request to Elasticsearch
+    response = requests.post(
+        f"{ELASTIC_URL}/_search",
+        json=query,
+        auth=(USERNAME, PASSWORD),
+        verify=False
+    )
+    
+    print(f"Response status code: {response.status_code}")
+    
+    if response.status_code == 200:
+        result = response.json()
+        with open("memory_metrics.json", "w") as f:
+            json.dump(result, f, indent=4)
+        print(f"Response saved to memory_metrics.json")
+        
+        # Print hit count
+        hit_count = result.get('hits', {}).get('total', {}).get('value', 0)
+        print(f"Total memory metric hits: {hit_count}")
+    else:
+        print(f"Error: {response.text}")
+
 if __name__ == "__main__":
     print("Querying metricbeat logs...")
     query_metricbeat()
     print("Querying CPU metrics from metricbeat logs...")
     query_cpu_metrics()
     export_cpu_metrics_to_excel()
+    print("\nExporting RAM metrics to Excel...")
+    export_ram_metrics_to_excel()
