@@ -10,7 +10,7 @@ def main():
     service_name = "sdn-news"
 
     consul_client = ConsulClient(consul_url)
-    elastic_client = ElasticClient(elastic_url, "elastic_user", "elastic_password")
+    elastic_client = ElasticClient(elastic_url, "elastic", "-5HJtLOH+H3ma-S*9wAA")
 
     # Extract load balancer IP from its URL.
     lb_ip = "10.100.0.9"
