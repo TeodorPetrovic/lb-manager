@@ -1,0 +1,202 @@
+[
+    {
+        "ID": "7575aa03-8cab-04eb-756f-75f53b9c0757",
+        "Node": "lb",
+        "Address": "10.100.0.9",
+        "Datacenter": "dc1",
+        "TaggedAddresses": {
+            "lan": "10.100.0.9",
+            "lan_ipv4": "10.100.0.9",
+            "wan": "10.100.0.9",
+            "wan_ipv4": "10.100.0.9"
+        },
+        "NodeMeta": {
+            "consul-network-segment": "",
+            "consul-version": "1.20.2"
+        },
+        "ServiceKind": "",
+        "ServiceID": "sdn-news-APP-1-10.0.0.5",
+        "ServiceName": "sdn-news",
+        "ServiceTags": [
+            "urlprefix-/api weight=50"
+        ],
+        "ServiceAddress": "10.0.0.5",
+        "ServiceTaggedAddresses": {
+            "lan_ipv4": {
+                "Address": "10.0.0.5",
+                "Port": 9901
+            },
+            "wan_ipv4": {
+                "Address": "10.0.0.5",
+                "Port": 9901
+            }
+        },
+        "ServiceWeights": {
+            "Passing": 1,
+            "Warning": 1
+        },
+        "ServiceMeta": {},
+        "ServicePort": 9901,
+        "ServiceSocketPath": "",
+        "ServiceEnableTagOverride": false,
+        "ServiceProxy": {
+            "Mode": "",
+            "MeshGateway": {},
+            "Expose": {}
+        },
+        "ServiceConnect": {},
+        "ServiceLocality": null,
+        "CreateIndex": 50102,
+        "ModifyIndex": 52999
+    },
+    {
+        "ID": "7575aa03-8cab-04eb-756f-75f53b9c0757",
+        "Node": "lb",
+        "Address": "10.100.0.9",
+        "Datacenter": "dc1",
+        "TaggedAddresses": {
+            "lan": "10.100.0.9",
+            "lan_ipv4": "10.100.0.9",
+            "wan": "10.100.0.9",
+            "wan_ipv4": "10.100.0.9"
+        },
+        "NodeMeta": {
+            "consul-network-segment": "",
+            "consul-version": "1.20.2"
+        },
+        "ServiceKind": "",
+        "ServiceID": "sdn-news-APP-2-10.0.0.6",
+        "ServiceName": "sdn-news",
+        "ServiceTags": [
+            "urlprefix-/api weight=50"
+        ],
+        "ServiceAddress": "10.0.0.6",
+        "ServiceTaggedAddresses": {
+            "lan_ipv4": {
+                "Address": "10.0.0.6",
+                "Port": 9901
+            },
+            "wan_ipv4": {
+                "Address": "10.0.0.6",
+                "Port": 9901
+            }
+        },
+        "ServiceWeights": {
+            "Passing": 1,
+            "Warning": 1
+        },
+        "ServiceMeta": {},
+        "ServicePort": 9901,
+        "ServiceSocketPath": "",
+        "ServiceEnableTagOverride": false,
+        "ServiceProxy": {
+            "Mode": "",
+            "MeshGateway": {},
+            "Expose": {}
+        },
+        "ServiceConnect": {},
+        "ServiceLocality": null,
+        "CreateIndex": 50108,
+        "ModifyIndex": 53002
+    },
+    {
+        "ID": "7575aa03-8cab-04eb-756f-75f53b9c0757",
+        "Node": "lb",
+        "Address": "10.100.0.9",
+        "Datacenter": "dc1",
+        "TaggedAddresses": {
+            "lan": "10.100.0.9",
+            "lan_ipv4": "10.100.0.9",
+            "wan": "10.100.0.9",
+            "wan_ipv4": "10.100.0.9"
+        },
+        "NodeMeta": {
+            "consul-network-segment": "",
+            "consul-version": "1.20.2"
+        },
+        "ServiceKind": "",
+        "ServiceID": "sdn-news-ip-172-31-35-53-172.31.35.53",
+        "ServiceName": "sdn-news",
+        "ServiceTags": [
+            "urlprefix-/api weight=50"
+        ],
+        "ServiceAddress": "172.31.35.53",
+        "ServiceTaggedAddresses": {
+            "lan_ipv4": {
+                "Address": "172.31.35.53",
+                "Port": 9901
+            },
+            "wan_ipv4": {
+                "Address": "172.31.35.53",
+                "Port": 9901
+            }
+        },
+        "ServiceWeights": {
+            "Passing": 1,
+            "Warning": 1
+        },
+        "ServiceMeta": {},
+        "ServicePort": 9901,
+        "ServiceSocketPath": "",
+        "ServiceEnableTagOverride": false,
+        "ServiceProxy": {
+            "Mode": "",
+            "MeshGateway": {},
+            "Expose": {}
+        },
+        "ServiceConnect": {},
+        "ServiceLocality": null,
+        "CreateIndex": 50111,
+        "ModifyIndex": 53001
+    },
+    {
+        "ID": "7575aa03-8cab-04eb-756f-75f53b9c0757",
+        "Node": "lb",
+        "Address": "10.100.0.9",
+        "Datacenter": "dc1",
+        "TaggedAddresses": {
+            "lan": "10.100.0.9",
+            "lan_ipv4": "10.100.0.9",
+            "wan": "10.100.0.9",
+            "wan_ipv4": "10.100.0.9"
+        },
+        "NodeMeta": {
+            "consul-network-segment": "",
+            "consul-version": "1.20.2"
+        },
+        "ServiceKind": "",
+        "ServiceID": "sdn-news-ip-172-31-43-77-172.31.43.77",
+        "ServiceName": "sdn-news",
+        "ServiceTags": [
+            "urlprefix-/api weight=50"
+        ],
+        "ServiceAddress": "172.31.43.77",
+        "ServiceTaggedAddresses": {
+            "lan_ipv4": {
+                "Address": "172.31.43.77",
+                "Port": 9901
+            },
+            "wan_ipv4": {
+                "Address": "172.31.43.77",
+                "Port": 9901
+            }
+        },
+        "ServiceWeights": {
+            "Passing": 1,
+            "Warning": 1
+        },
+        "ServiceMeta": {},
+        "ServicePort": 9901,
+        "ServiceSocketPath": "",
+        "ServiceEnableTagOverride": false,
+        "ServiceProxy": {
+            "Mode": "",
+            "MeshGateway": {},
+            "Expose": {}
+        },
+        "ServiceConnect": {},
+        "ServiceLocality": null,
+        "CreateIndex": 50254,
+        "ModifyIndex": 52997
+    }
+]

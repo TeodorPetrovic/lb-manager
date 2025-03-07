@@ -6,7 +6,7 @@ from urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 # Consul configuration
-CONSUL_HOST = "10.100.0.7"
+CONSUL_HOST = "10.100.0.9"
 CONSUL_PORT = 8500  # Default Consul HTTP API port
 SERVICE_NAME = "sdn-news"
 USE_HTTPS = False  # Set to True if Consul API is using HTTPS
