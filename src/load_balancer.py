@@ -373,43 +373,74 @@ class DynamicLoadBalancer:
             
             logger.info(f"Updating weight for {node_name} ({ip_address}) to {final_weight}")
             
-            # DIRECT APPROACH: Hard-code the update_service_weight logic here
             protocol = "https" if USE_HTTPS else "http"
             
             try:
-                # Find the service instance with this specific IP
-                consul_url = f"{protocol}://{CONSUL_HOST}:{CONSUL_PORT}/v1/catalog/service/{SERVICE_NAME}"
-                response = requests.get(consul_url, verify=False)
+                # Step 1: Find service details
+                agent_url = f"{protocol}://{CONSUL_HOST}:{CONSUL_PORT}/v1/agent/service/{service_id}"
+                agent_response = requests.get(agent_url, verify=False)
                 
-                if response.status_code != 200:
-                    logger.error(f"Error finding service: {response.status_code}")
+                if agent_response.status_code != 200:
+                    logger.error(f"Error getting service details: {agent_response.status_code}")
                     continue
+                    
+                service_details = agent_response.json()
                 
-                services = response.json()
+                # Step 2: Update the weight in the tags
+                current_tags = service_details.get('Tags', [])
+                new_tags = []
+                weight_updated = False
                 
-                # Find instance with target IP
-                target_instance = None
-                for instance in services:
-                    service_address = instance.get('ServiceAddress') or instance.get('Address')
-                    if service_address == ip_address:  # Make sure we're comparing with the correct IP!
-                        target_instance = instance
-                        break
+                for tag in current_tags:
+                    if 'urlprefix-/api weight=' in tag:
+                        # Replace the weight value
+                        parts = tag.split('weight=')
+                        new_tag = f"{parts[0]}weight={final_weight}"
+                        new_tags.append(new_tag)
+                        weight_updated = True
+                        logger.info(f"Updating tag from '{tag}' to '{new_tag}'")
+                    else:
+                        new_tags.append(tag)
                 
-                if not target_instance:
-                    logger.error(f"No service instance found with IP: {ip_address}")
-                    continue
+                # If no matching tag was found, add a new one
+                if not weight_updated:
+                    new_tag = f"urlprefix-/api weight={final_weight}"
+                    new_tags.append(new_tag)
+                    logger.info(f"Adding new tag: '{new_tag}'")
                 
-                # Rest of update logic
-                service_id = target_instance.get('ServiceID')
-                logger.info(f"Found service instance: {service_id}")
+                # Step 3: Prepare the updated service registration payload
+                updated_service = {
+                    "ID": service_id,
+                    "Name": service_details.get('Service'),
+                    "Tags": new_tags,
+                    "Address": ip_address,  # Use the correct IP here!
+                    "Port": service_details.get('Port', 0)
+                }
                 
-                # Rest of your update logic...
+                # Add Meta field only if it exists in original service
+                if 'Meta' in service_details:
+                    updated_service["Meta"] = service_details.get('Meta', {})
+                    
+                logger.info(f"Sending updated service registration: {json.dumps(updated_service, indent=2)}")
                 
-                # Log success
-                logger.info(f"Successfully updated weight for {service_id}")
+                # Step 4: Re-register the service with updated tags
+                register_url = f"{protocol}://{CONSUL_HOST}:{CONSUL_PORT}/v1/agent/service/register"
+                register_response = requests.put(
+                    register_url,
+                    json=updated_service,
+                    verify=False
+                )
+                
+                if register_response.status_code == 200:
+                    logger.info(f"Successfully updated weight for {service_id}")
+                else:
+                    logger.error(f"Error updating service: {register_response.status_code}")
+                    logger.error(f"Response: {register_response.text}")
                 
             except Exception as e:
                 logger.error(f"Error updating weight for {ip_address}: {e}")
+                import traceback
+                logger.error(traceback.format_exc())
     
     def export_results(self):
         """Export weight calculation results to Excel and JSON"""

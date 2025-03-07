@@ -1652,3 +1652,184 @@
 2025-03-07 09:09:25,052 - INFO - Exported JSON data to load_balancing_weights_20250307_090925.json
 2025-03-07 09:09:25,052 - INFO - Cycle completed in 0.60 seconds
 2025-03-07 09:09:25,052 - INFO - Sleeping for 599.40 seconds until next cycle
+2025-03-07 09:15:58,917 - INFO - Starting Dynamic Load Balancer
+2025-03-07 09:15:58,917 - INFO - === Starting new balancing cycle ===
+2025-03-07 09:15:59,092 - INFO - Collecting metrics for all service instances
+2025-03-07 09:15:59,092 - INFO - Collecting metrics for 10.0.0.5
+2025-03-07 09:15:59,093 - INFO - Getting network and host metrics for 10.0.0.5
+2025-03-07 09:15:59,093 - INFO - Created unique metrics for 10.0.0.5: CPU=35%, RAM=55%, Trend=-0.45
+2025-03-07 09:15:59,093 - INFO - Getting Zeek connection metrics for 10.0.0.5
+2025-03-07 09:15:59,093 - INFO - Directly querying Zeek logs for IP: 10.0.0.5
+2025-03-07 09:15:59,348 - INFO - Found 1000 Zeek logs for 10.0.0.5
+2025-03-07 09:15:59,349 - INFO - Added variation for 10.0.0.5: duration=65ms
+2025-03-07 09:15:59,355 - INFO - Metrics for 10.0.0.5: {
+  "node_name": "lb",
+  "service_id": "sdn-news-APP-1-10.0.0.5",
+  "cpu_utilization": 35,
+  "ram_utilization": 55,
+  "trend_coefficient": -0.45,
+  "avg_connection_duration": 65,
+  "bytes_sent": 22955,
+  "bytes_received": 28565,
+  "error_ratio": 0.015
+}
+2025-03-07 09:15:59,356 - INFO - Collecting metrics for 10.0.0.6
+2025-03-07 09:15:59,356 - INFO - Getting network and host metrics for 10.0.0.6
+2025-03-07 09:15:59,356 - INFO - Created unique metrics for 10.0.0.6: CPU=36%, RAM=46%, Trend=-0.28
+2025-03-07 09:15:59,356 - INFO - Getting Zeek connection metrics for 10.0.0.6
+2025-03-07 09:15:59,357 - INFO - Directly querying Zeek logs for IP: 10.0.0.6
+2025-03-07 09:15:59,457 - INFO - Found 40 Zeek logs for 10.0.0.6
+2025-03-07 09:15:59,458 - INFO - Added variation for 10.0.0.6: duration=66ms
+2025-03-07 09:15:59,460 - INFO - Metrics for 10.0.0.6: {
+  "node_name": "lb",
+  "service_id": "sdn-news-APP-2-10.0.0.6",
+  "cpu_utilization": 36,
+  "ram_utilization": 46,
+  "trend_coefficient": -0.28,
+  "avg_connection_duration": 66,
+  "bytes_sent": 23952,
+  "bytes_received": 29136,
+  "error_ratio": 0.016
+}
+2025-03-07 09:15:59,461 - INFO - Collecting metrics for 172.31.35.53
+2025-03-07 09:15:59,461 - INFO - Getting network and host metrics for 172.31.35.53
+2025-03-07 09:15:59,461 - INFO - Created unique metrics for 172.31.35.53: CPU=71%, RAM=51%, Trend=0.47
+2025-03-07 09:15:59,461 - INFO - Getting Zeek connection metrics for 172.31.35.53
+2025-03-07 09:15:59,461 - INFO - Directly querying Zeek logs for IP: 172.31.35.53
+2025-03-07 09:15:59,571 - INFO - Found 66 Zeek logs for 172.31.35.53
+2025-03-07 09:15:59,571 - INFO - Added variation for 172.31.35.53: duration=341ms
+2025-03-07 09:15:59,574 - INFO - Metrics for 172.31.35.53: {
+  "node_name": "lb",
+  "service_id": "sdn-news-ip-172-31-35-53-172.31.35.53",
+  "cpu_utilization": 71,
+  "ram_utilization": 51,
+  "trend_coefficient": 0.47,
+  "avg_connection_duration": 341,
+  "bytes_sent": 48127,
+  "bytes_received": 86161,
+  "error_ratio": 0.041
+}
+2025-03-07 09:15:59,575 - INFO - Collecting metrics for 172.31.43.77
+2025-03-07 09:15:59,575 - INFO - Getting network and host metrics for 172.31.43.77
+2025-03-07 09:15:59,575 - INFO - Created unique metrics for 172.31.43.77: CPU=43%, RAM=43%, Trend=-0.09
+2025-03-07 09:15:59,575 - INFO - Getting Zeek connection metrics for 172.31.43.77
+2025-03-07 09:15:59,575 - INFO - Directly querying Zeek logs for IP: 172.31.43.77
+2025-03-07 09:15:59,666 - INFO - Found 57 Zeek logs for 172.31.43.77
+2025-03-07 09:15:59,666 - INFO - Added variation for 172.31.43.77: duration=73ms
+2025-03-07 09:15:59,668 - INFO - Metrics for 172.31.43.77: {
+  "node_name": "lb",
+  "service_id": "sdn-news-ip-172-31-43-77-172.31.43.77",
+  "cpu_utilization": 43,
+  "ram_utilization": 43,
+  "trend_coefficient": -0.09,
+  "avg_connection_duration": 73,
+  "bytes_sent": 30031,
+  "bytes_received": 104433,
+  "error_ratio": 0.023
+}
+2025-03-07 09:15:59,669 - INFO - Calculating normalized scores and weights
+2025-03-07 09:15:59,669 - INFO - Weight calculation for 10.0.0.5 (lb):
+2025-03-07 09:15:59,670 - INFO -   Scores: {
+  "cpu_utilization": 65,
+  "ram_utilization": 45,
+  "trend_coefficient": 27.500000000000004,
+  "avg_connection_duration": 100,
+  "bytes_sent": 100,
+  "bytes_received": 100,
+  "error_ratio": 70.0
+}
+2025-03-07 09:15:59,670 - INFO -   Weighted score: 69.00
+2025-03-07 09:15:59,670 - INFO -   Final weight: 69
+2025-03-07 09:15:59,670 - INFO - Weight calculation for 10.0.0.6 (lb):
+2025-03-07 09:15:59,670 - INFO -   Scores: {
+  "cpu_utilization": 64,
+  "ram_utilization": 54,
+  "trend_coefficient": 36.0,
+  "avg_connection_duration": 100,
+  "bytes_sent": 100,
+  "bytes_received": 100,
+  "error_ratio": 68.0
+}
+2025-03-07 09:15:59,670 - INFO -   Weighted score: 71.70
+2025-03-07 09:15:59,670 - INFO -   Final weight: 72
+2025-03-07 09:15:59,670 - INFO - Weight calculation for 172.31.35.53 (lb):
+2025-03-07 09:15:59,670 - INFO -   Scores: {
+  "cpu_utilization": 29,
+  "ram_utilization": 49,
+  "trend_coefficient": 73.5,
+  "avg_connection_duration": 71.8,
+  "bytes_sent": 100,
+  "bytes_received": 100,
+  "error_ratio": 18.0
+}
+2025-03-07 09:15:59,671 - INFO -   Weighted score: 62.56
+2025-03-07 09:15:59,671 - INFO -   Final weight: 63
+2025-03-07 09:15:59,671 - INFO - Weight calculation for 172.31.43.77 (lb):
+2025-03-07 09:15:59,671 - INFO -   Scores: {
+  "cpu_utilization": 57,
+  "ram_utilization": 57,
+  "trend_coefficient": 45.5,
+  "avg_connection_duration": 100,
+  "bytes_sent": 100,
+  "bytes_received": 99.5567,
+  "error_ratio": 54.0
+}
+2025-03-07 09:15:59,671 - INFO -   Weighted score: 71.56
+2025-03-07 09:15:59,671 - INFO -   Final weight: 72
+2025-03-07 09:15:59,671 - INFO - Updating weights in Consul
+2025-03-07 09:15:59,672 - INFO - Updating weight for lb (10.0.0.5) to 69
+2025-03-07 09:15:59,675 - INFO - Updating tag from 'urlprefix-/api weight=53' to 'urlprefix-/api weight=69'
+2025-03-07 09:15:59,676 - INFO - Sending updated service registration: {
+  "ID": "sdn-news-APP-1-10.0.0.5",
+  "Name": "sdn-news",
+  "Tags": [
+    "urlprefix-/api weight=69"
+  ],
+  "Address": "10.0.0.5",
+  "Port": 9901,
+  "Meta": {}
+}
+2025-03-07 09:15:59,682 - INFO - Successfully updated weight for sdn-news-APP-1-10.0.0.5
+2025-03-07 09:15:59,682 - INFO - Updating weight for lb (10.0.0.6) to 72
+2025-03-07 09:15:59,685 - INFO - Updating tag from 'urlprefix-/api weight=71' to 'urlprefix-/api weight=72'
+2025-03-07 09:15:59,686 - INFO - Sending updated service registration: {
+  "ID": "sdn-news-APP-2-10.0.0.6",
+  "Name": "sdn-news",
+  "Tags": [
+    "urlprefix-/api weight=72"
+  ],
+  "Address": "10.0.0.6",
+  "Port": 9901,
+  "Meta": {}
+}
+2025-03-07 09:15:59,692 - INFO - Successfully updated weight for sdn-news-APP-2-10.0.0.6
+2025-03-07 09:15:59,692 - INFO - Updating weight for lb (172.31.35.53) to 63
+2025-03-07 09:15:59,695 - INFO - Updating tag from 'urlprefix-/api weight=71' to 'urlprefix-/api weight=63'
+2025-03-07 09:15:59,696 - INFO - Sending updated service registration: {
+  "ID": "sdn-news-ip-172-31-35-53-172.31.35.53",
+  "Name": "sdn-news",
+  "Tags": [
+    "urlprefix-/api weight=63"
+  ],
+  "Address": "172.31.35.53",
+  "Port": 9901,
+  "Meta": {}
+}
+2025-03-07 09:15:59,702 - INFO - Successfully updated weight for sdn-news-ip-172-31-35-53-172.31.35.53
+2025-03-07 09:15:59,702 - INFO - Updating weight for lb (172.31.43.77) to 72
+2025-03-07 09:15:59,706 - INFO - Updating tag from 'urlprefix-/api weight=71' to 'urlprefix-/api weight=72'
+2025-03-07 09:15:59,706 - INFO - Sending updated service registration: {
+  "ID": "sdn-news-ip-172-31-43-77-172.31.43.77",
+  "Name": "sdn-news",
+  "Tags": [
+    "urlprefix-/api weight=72"
+  ],
+  "Address": "172.31.43.77",
+  "Port": 9901,
+  "Meta": {}
+}
+2025-03-07 09:15:59,712 - INFO - Successfully updated weight for sdn-news-ip-172-31-43-77-172.31.43.77
+2025-03-07 09:15:59,737 - INFO - Exported weights to load_balancing_weights_20250307_091559.xlsx
+2025-03-07 09:15:59,738 - INFO - Exported JSON data to load_balancing_weights_20250307_091559.json
+2025-03-07 09:15:59,739 - INFO - Cycle completed in 0.82 seconds
+2025-03-07 09:15:59,739 - INFO - Sleeping for 599.18 seconds until next cycle
