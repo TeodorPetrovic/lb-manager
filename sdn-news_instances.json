@@ -18,7 +18,7 @@
         "ServiceID": "sdn-news-APP-1-10.0.0.5",
         "ServiceName": "sdn-news",
         "ServiceTags": [
-            "urlprefix-/api weight=50"
+            "urlprefix-/api weight=53"
         ],
         "ServiceAddress": "10.0.0.5",
         "ServiceTaggedAddresses": {
@@ -47,7 +47,7 @@
         "ServiceConnect": {},
         "ServiceLocality": null,
         "CreateIndex": 50102,
-        "ModifyIndex": 52999
+        "ModifyIndex": 120040
     },
     {
         "ID": "7575aa03-8cab-04eb-756f-75f53b9c0757",
@@ -68,7 +68,7 @@
         "ServiceID": "sdn-news-APP-2-10.0.0.6",
         "ServiceName": "sdn-news",
         "ServiceTags": [
-            "urlprefix-/api weight=50"
+            "urlprefix-/api weight=71"
         ],
         "ServiceAddress": "10.0.0.6",
         "ServiceTaggedAddresses": {
@@ -97,7 +97,7 @@
         "ServiceConnect": {},
         "ServiceLocality": null,
         "CreateIndex": 50108,
-        "ModifyIndex": 53002
+        "ModifyIndex": 120041
     },
     {
         "ID": "7575aa03-8cab-04eb-756f-75f53b9c0757",
@@ -118,7 +118,7 @@
         "ServiceID": "sdn-news-ip-172-31-35-53-172.31.35.53",
         "ServiceName": "sdn-news",
         "ServiceTags": [
-            "urlprefix-/api weight=50"
+            "urlprefix-/api weight=71"
         ],
         "ServiceAddress": "172.31.35.53",
         "ServiceTaggedAddresses": {
@@ -147,7 +147,7 @@
         "ServiceConnect": {},
         "ServiceLocality": null,
         "CreateIndex": 50111,
-        "ModifyIndex": 53001
+        "ModifyIndex": 120042
     },
     {
         "ID": "7575aa03-8cab-04eb-756f-75f53b9c0757",
@@ -168,7 +168,7 @@
         "ServiceID": "sdn-news-ip-172-31-43-77-172.31.43.77",
         "ServiceName": "sdn-news",
         "ServiceTags": [
-            "urlprefix-/api weight=50"
+            "urlprefix-/api weight=71"
         ],
         "ServiceAddress": "172.31.43.77",
         "ServiceTaggedAddresses": {
@@ -197,6 +197,6 @@
         "ServiceConnect": {},
         "ServiceLocality": null,
         "CreateIndex": 50254,
-        "ModifyIndex": 52997
+        "ModifyIndex": 120043
     }
 ]

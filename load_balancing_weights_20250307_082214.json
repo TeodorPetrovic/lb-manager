@@ -1,0 +1,112 @@
+{
+  "timestamp": "20250307_082214",
+  "service_name": "sdn-news",
+  "instances": {
+    "10.0.0.5": {
+      "node_name": "lb",
+      "service_id": "sdn-news-APP-1-10.0.0.5",
+      "cpu_utilization": 50,
+      "ram_utilization": 50,
+      "trend_coefficient": 0,
+      "avg_connection_duration": 150,
+      "bytes_sent": 12500,
+      "bytes_received": 45000,
+      "error_ratio": 0.02
+    },
+    "10.0.0.6": {
+      "node_name": "lb",
+      "service_id": "sdn-news-APP-2-10.0.0.6",
+      "cpu_utilization": 50,
+      "ram_utilization": 50,
+      "trend_coefficient": 0,
+      "avg_connection_duration": 150,
+      "bytes_sent": 12500,
+      "bytes_received": 45000,
+      "error_ratio": 0.02
+    },
+    "172.31.35.53": {
+      "node_name": "lb",
+      "service_id": "sdn-news-ip-172-31-35-53-172.31.35.53",
+      "cpu_utilization": 50,
+      "ram_utilization": 50,
+      "trend_coefficient": 0,
+      "avg_connection_duration": 150,
+      "bytes_sent": 12500,
+      "bytes_received": 45000,
+      "error_ratio": 0.02
+    },
+    "172.31.43.77": {
+      "node_name": "lb",
+      "service_id": "sdn-news-ip-172-31-43-77-172.31.43.77",
+      "cpu_utilization": 50,
+      "ram_utilization": 50,
+      "trend_coefficient": 0,
+      "avg_connection_duration": 150,
+      "bytes_sent": 12500,
+      "bytes_received": 45000,
+      "error_ratio": 0.02
+    }
+  },
+  "weights": {
+    "10.0.0.5": {
+      "scores": {
+        "cpu_utilization": 50,
+        "ram_utilization": 50,
+        "trend_coefficient": 50,
+        "avg_connection_duration": 100,
+        "bytes_sent": 100,
+        "bytes_received": 100,
+        "error_ratio": 60.0
+      },
+      "weighted_score": 71.0,
+      "final_weight": 71,
+      "node_name": "lb",
+      "service_id": "sdn-news-APP-1-10.0.0.5"
+    },
+    "10.0.0.6": {
+      "scores": {
+        "cpu_utilization": 50,
+        "ram_utilization": 50,
+        "trend_coefficient": 50,
+        "avg_connection_duration": 100,
+        "bytes_sent": 100,
+        "bytes_received": 100,
+        "error_ratio": 60.0
+      },
+      "weighted_score": 71.0,
+      "final_weight": 71,
+      "node_name": "lb",
+      "service_id": "sdn-news-APP-2-10.0.0.6"
+    },
+    "172.31.35.53": {
+      "scores": {
+        "cpu_utilization": 50,
+        "ram_utilization": 50,
+        "trend_coefficient": 50,
+        "avg_connection_duration": 100,
+        "bytes_sent": 100,
+        "bytes_received": 100,
+        "error_ratio": 60.0
+      },
+      "weighted_score": 71.0,
+      "final_weight": 71,
+      "node_name": "lb",
+      "service_id": "sdn-news-ip-172-31-35-53-172.31.35.53"
+    },
+    "172.31.43.77": {
+      "scores": {
+        "cpu_utilization": 50,
+        "ram_utilization": 50,
+        "trend_coefficient": 50,
+        "avg_connection_duration": 100,
+        "bytes_sent": 100,
+        "bytes_received": 100,
+        "error_ratio": 60.0
+      },
+      "weighted_score": 71.0,
+      "final_weight": 71,
+      "node_name": "lb",
+      "service_id": "sdn-news-ip-172-31-43-77-172.31.43.77"
+    }
+  }
+}
