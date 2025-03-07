@@ -1,0 +1,287 @@
+2025-03-07 07:37:47,770 - INFO - Starting Dynamic Load Balancer
+2025-03-07 07:37:47,770 - INFO - === Starting new balancing cycle ===
+2025-03-07 07:37:47,770 - INFO - Discovering service instances from Consul
+2025-03-07 07:37:47,776 - INFO - Found 4 service instances
+2025-03-07 07:37:47,776 - INFO - Instance: sdn-news-APP-1-10.0.0.5 at 10.0.0.5
+2025-03-07 07:37:47,776 - INFO - Instance: sdn-news-APP-2-10.0.0.6 at 10.0.0.6
+2025-03-07 07:37:47,776 - INFO - Instance: sdn-news-ip-172-31-35-53-172.31.35.53 at 172.31.35.53
+2025-03-07 07:37:47,776 - INFO - Instance: sdn-news-ip-172-31-43-77-172.31.43.77 at 172.31.43.77
+2025-03-07 07:37:47,776 - INFO - Collecting metrics for all service instances
+2025-03-07 07:37:47,777 - INFO - Collecting metrics for 10.0.0.5
+2025-03-07 07:37:47,777 - INFO - Getting host metrics for 10.0.0.5
+2025-03-07 07:37:47,777 - INFO - Host metrics for 10.0.0.5: CPU=45%, RAM=55%, Trend=0.5
+2025-03-07 07:37:47,777 - INFO - Getting connection metrics for 10.0.0.5
+2025-03-07 07:37:48,057 - INFO - Found 1000 Zeek connection logs for 10.0.0.5
+2025-03-07 07:37:48,058 - INFO - Connection metrics for 10.0.0.5: avg_duration=0.025s, sent=0 bytes, received=266598 bytes, error_ratio=0.113
+2025-03-07 07:37:48,065 - INFO - Metrics for 10.0.0.5: {
+  "node_name": "lb",
+  "service_id": "sdn-news-APP-1-10.0.0.5",
+  "cpu_utilization": 45,
+  "ram_utilization": 55,
+  "trend_coefficient": 0.5,
+  "avg_connection_duration": 0.024691454545454548,
+  "bytes_sent": 0,
+  "bytes_received": 266598,
+  "error_ratio": 0.113
+}
+2025-03-07 07:37:48,065 - INFO - Collecting metrics for 10.0.0.6
+2025-03-07 07:37:48,066 - INFO - Getting host metrics for 10.0.0.6
+2025-03-07 07:37:48,066 - INFO - Host metrics for 10.0.0.6: CPU=46%, RAM=56%, Trend=0.6
+2025-03-07 07:37:48,066 - INFO - Getting connection metrics for 10.0.0.6
+2025-03-07 07:37:48,148 - INFO - Found 0 Zeek connection logs for 10.0.0.6
+2025-03-07 07:37:48,150 - INFO - Metrics for 10.0.0.6: {
+  "node_name": "lb",
+  "service_id": "sdn-news-APP-2-10.0.0.6",
+  "cpu_utilization": 46,
+  "ram_utilization": 56,
+  "trend_coefficient": 0.6,
+  "avg_connection_duration": 0.15,
+  "bytes_sent": 12500,
+  "bytes_received": 45000,
+  "error_ratio": 0.02
+}
+2025-03-07 07:37:48,151 - INFO - Collecting metrics for 172.31.35.53
+2025-03-07 07:37:48,151 - INFO - Getting host metrics for 172.31.35.53
+2025-03-07 07:37:48,151 - INFO - Host metrics for 172.31.35.53: CPU=41%, RAM=41%, Trend=0.1
+2025-03-07 07:37:48,152 - INFO - Getting connection metrics for 172.31.35.53
+2025-03-07 07:37:48,232 - INFO - Found 0 Zeek connection logs for 172.31.35.53
+2025-03-07 07:37:48,234 - INFO - Metrics for 172.31.35.53: {
+  "node_name": "lb",
+  "service_id": "sdn-news-ip-172-31-35-53-172.31.35.53",
+  "cpu_utilization": 41,
+  "ram_utilization": 41,
+  "trend_coefficient": 0.1,
+  "avg_connection_duration": 0.15,
+  "bytes_sent": 12500,
+  "bytes_received": 45000,
+  "error_ratio": 0.02
+}
+2025-03-07 07:37:48,235 - INFO - Collecting metrics for 172.31.43.77
+2025-03-07 07:37:48,235 - INFO - Getting host metrics for 172.31.43.77
+2025-03-07 07:37:48,235 - INFO - Host metrics for 172.31.43.77: CPU=53%, RAM=63%, Trend=-0.7
+2025-03-07 07:37:48,235 - INFO - Getting connection metrics for 172.31.43.77
+2025-03-07 07:37:48,323 - INFO - Found 0 Zeek connection logs for 172.31.43.77
+2025-03-07 07:37:48,325 - INFO - Metrics for 172.31.43.77: {
+  "node_name": "lb",
+  "service_id": "sdn-news-ip-172-31-43-77-172.31.43.77",
+  "cpu_utilization": 53,
+  "ram_utilization": 63,
+  "trend_coefficient": -0.7,
+  "avg_connection_duration": 0.15,
+  "bytes_sent": 12500,
+  "bytes_received": 45000,
+  "error_ratio": 0.02
+}
+2025-03-07 07:37:48,326 - INFO - Calculating normalized scores and weights
+2025-03-07 07:37:48,326 - INFO - Weight calculation for 10.0.0.5 (lb):
+2025-03-07 07:37:48,326 - INFO -   Scores: {
+  "cpu_utilization": 55,
+  "ram_utilization": 45,
+  "trend_coefficient": 75.0,
+  "avg_connection_duration": 100,
+  "bytes_sent": 0.0,
+  "bytes_received": 83.3402,
+  "error_ratio": 0
+}
+2025-03-07 07:37:48,326 - INFO -   Weighted score: 58.33
+2025-03-07 07:37:48,326 - INFO -   Final weight: 58
+2025-03-07 07:37:48,326 - INFO - Weight calculation for 10.0.0.6 (lb):
+2025-03-07 07:37:48,326 - INFO -   Scores: {
+  "cpu_utilization": 54,
+  "ram_utilization": 44,
+  "trend_coefficient": 80.0,
+  "avg_connection_duration": 100,
+  "bytes_sent": 100,
+  "bytes_received": 100,
+  "error_ratio": 60.0
+}
+2025-03-07 07:37:48,327 - INFO -   Weighted score: 76.70
+2025-03-07 07:37:48,327 - INFO -   Final weight: 77
+2025-03-07 07:37:48,327 - INFO - Weight calculation for 172.31.35.53 (lb):
+2025-03-07 07:37:48,327 - INFO -   Scores: {
+  "cpu_utilization": 59,
+  "ram_utilization": 59,
+  "trend_coefficient": 55.00000000000001,
+  "avg_connection_duration": 100,
+  "bytes_sent": 100,
+  "bytes_received": 100,
+  "error_ratio": 60.0
+}
+2025-03-07 07:37:48,327 - INFO -   Weighted score: 74.70
+2025-03-07 07:37:48,327 - INFO -   Final weight: 75
+2025-03-07 07:37:48,327 - INFO - Weight calculation for 172.31.43.77 (lb):
+2025-03-07 07:37:48,327 - INFO -   Scores: {
+  "cpu_utilization": 47,
+  "ram_utilization": 37,
+  "trend_coefficient": 15.000000000000002,
+  "avg_connection_duration": 100,
+  "bytes_sent": 100,
+  "bytes_received": 100,
+  "error_ratio": 60.0
+}
+2025-03-07 07:37:48,328 - INFO -   Weighted score: 61.60
+2025-03-07 07:37:48,328 - INFO -   Final weight: 62
+2025-03-07 07:37:48,328 - INFO - Updating weights in Consul
+2025-03-07 07:37:48,328 - INFO - Updating weight for lb (10.0.0.5) to 58
+2025-03-07 07:37:48,337 - INFO - Updating tag from 'urlprefix-/api weight=60' to 'urlprefix-/api weight=58'
+2025-03-07 07:37:48,344 - INFO - Successfully updated weight for service sdn-news-APP-1-10.0.0.5 to 58
+2025-03-07 07:37:48,345 - INFO - Successfully updated weight for sdn-news-APP-1-10.0.0.5
+2025-03-07 07:37:48,345 - INFO - Updating weight for lb (10.0.0.6) to 77
+2025-03-07 07:37:48,352 - INFO - Updating tag from 'urlprefix-/api weight=50' to 'urlprefix-/api weight=77'
+2025-03-07 07:37:48,359 - INFO - Successfully updated weight for service sdn-news-APP-2-10.0.0.6 to 77
+2025-03-07 07:37:48,359 - INFO - Successfully updated weight for sdn-news-APP-2-10.0.0.6
+2025-03-07 07:37:48,359 - INFO - Updating weight for lb (172.31.35.53) to 75
+2025-03-07 07:37:48,366 - INFO - Updating tag from 'urlprefix-/api weight=50' to 'urlprefix-/api weight=75'
+2025-03-07 07:37:48,371 - INFO - Successfully updated weight for service sdn-news-ip-172-31-35-53-172.31.35.53 to 75
+2025-03-07 07:37:48,372 - INFO - Successfully updated weight for sdn-news-ip-172-31-35-53-172.31.35.53
+2025-03-07 07:37:48,372 - INFO - Updating weight for lb (172.31.43.77) to 62
+2025-03-07 07:37:48,378 - INFO - Updating tag from 'urlprefix-/api weight=50' to 'urlprefix-/api weight=62'
+2025-03-07 07:37:48,384 - INFO - Successfully updated weight for service sdn-news-ip-172-31-43-77-172.31.43.77 to 62
+2025-03-07 07:37:48,384 - INFO - Successfully updated weight for sdn-news-ip-172-31-43-77-172.31.43.77
+2025-03-07 07:37:48,541 - INFO - Exported weights to load_balancing_weights_20250307_073748.xlsx
+2025-03-07 07:37:48,541 - INFO - Exported JSON data to load_balancing_weights_20250307_073748.json
+2025-03-07 07:37:48,542 - INFO - Cycle completed in 0.77 seconds
+2025-03-07 07:37:48,542 - INFO - Sleeping for 599.23 seconds until next cycle
+2025-03-07 07:47:47,771 - INFO - === Starting new balancing cycle ===
+2025-03-07 07:47:47,771 - INFO - Discovering service instances from Consul
+2025-03-07 07:47:47,777 - INFO - Found 4 service instances
+2025-03-07 07:47:47,778 - INFO - Instance: sdn-news-APP-1-10.0.0.5 at 10.0.0.5
+2025-03-07 07:47:47,778 - INFO - Instance: sdn-news-APP-2-10.0.0.6 at 10.0.0.6
+2025-03-07 07:47:47,778 - INFO - Instance: sdn-news-ip-172-31-35-53-172.31.35.53 at 172.31.35.53
+2025-03-07 07:47:47,778 - INFO - Instance: sdn-news-ip-172-31-43-77-172.31.43.77 at 172.31.43.77
+2025-03-07 07:47:47,778 - INFO - Collecting metrics for all service instances
+2025-03-07 07:47:47,778 - INFO - Collecting metrics for 10.0.0.5
+2025-03-07 07:47:47,779 - INFO - Getting host metrics for 10.0.0.5
+2025-03-07 07:47:47,779 - INFO - Host metrics for 10.0.0.5: CPU=45%, RAM=55%, Trend=0.5
+2025-03-07 07:47:47,779 - INFO - Getting connection metrics for 10.0.0.5
+2025-03-07 07:47:48,049 - INFO - Found 1000 Zeek connection logs for 10.0.0.5
+2025-03-07 07:47:48,050 - INFO - Connection metrics for 10.0.0.5: avg_duration=0.028s, sent=0 bytes, received=269171 bytes, error_ratio=0.114
+2025-03-07 07:47:48,057 - INFO - Metrics for 10.0.0.5: {
+  "node_name": "lb",
+  "service_id": "sdn-news-APP-1-10.0.0.5",
+  "cpu_utilization": 45,
+  "ram_utilization": 55,
+  "trend_coefficient": 0.5,
+  "avg_connection_duration": 0.027883152709359607,
+  "bytes_sent": 0,
+  "bytes_received": 269171,
+  "error_ratio": 0.114
+}
+2025-03-07 07:47:48,057 - INFO - Collecting metrics for 10.0.0.6
+2025-03-07 07:47:48,057 - INFO - Getting host metrics for 10.0.0.6
+2025-03-07 07:47:48,057 - INFO - Host metrics for 10.0.0.6: CPU=46%, RAM=56%, Trend=0.6
+2025-03-07 07:47:48,058 - INFO - Getting connection metrics for 10.0.0.6
+2025-03-07 07:47:48,154 - INFO - Found 0 Zeek connection logs for 10.0.0.6
+2025-03-07 07:47:48,157 - INFO - Metrics for 10.0.0.6: {
+  "node_name": "lb",
+  "service_id": "sdn-news-APP-2-10.0.0.6",
+  "cpu_utilization": 46,
+  "ram_utilization": 56,
+  "trend_coefficient": 0.6,
+  "avg_connection_duration": 0.15,
+  "bytes_sent": 12500,
+  "bytes_received": 45000,
+  "error_ratio": 0.02
+}
+2025-03-07 07:47:48,158 - INFO - Collecting metrics for 172.31.35.53
+2025-03-07 07:47:48,158 - INFO - Getting host metrics for 172.31.35.53
+2025-03-07 07:47:48,158 - INFO - Host metrics for 172.31.35.53: CPU=41%, RAM=41%, Trend=0.1
+2025-03-07 07:47:48,158 - INFO - Getting connection metrics for 172.31.35.53
+2025-03-07 07:47:48,252 - INFO - Found 0 Zeek connection logs for 172.31.35.53
+2025-03-07 07:47:48,254 - INFO - Metrics for 172.31.35.53: {
+  "node_name": "lb",
+  "service_id": "sdn-news-ip-172-31-35-53-172.31.35.53",
+  "cpu_utilization": 41,
+  "ram_utilization": 41,
+  "trend_coefficient": 0.1,
+  "avg_connection_duration": 0.15,
+  "bytes_sent": 12500,
+  "bytes_received": 45000,
+  "error_ratio": 0.02
+}
+2025-03-07 07:47:48,254 - INFO - Collecting metrics for 172.31.43.77
+2025-03-07 07:47:48,255 - INFO - Getting host metrics for 172.31.43.77
+2025-03-07 07:47:48,255 - INFO - Host metrics for 172.31.43.77: CPU=53%, RAM=63%, Trend=-0.7
+2025-03-07 07:47:48,255 - INFO - Getting connection metrics for 172.31.43.77
+2025-03-07 07:47:48,349 - INFO - Found 0 Zeek connection logs for 172.31.43.77
+2025-03-07 07:47:48,351 - INFO - Metrics for 172.31.43.77: {
+  "node_name": "lb",
+  "service_id": "sdn-news-ip-172-31-43-77-172.31.43.77",
+  "cpu_utilization": 53,
+  "ram_utilization": 63,
+  "trend_coefficient": -0.7,
+  "avg_connection_duration": 0.15,
+  "bytes_sent": 12500,
+  "bytes_received": 45000,
+  "error_ratio": 0.02
+}
+2025-03-07 07:47:48,351 - INFO - Calculating normalized scores and weights
+2025-03-07 07:47:48,352 - INFO - Weight calculation for 10.0.0.5 (lb):
+2025-03-07 07:47:48,352 - INFO -   Scores: {
+  "cpu_utilization": 55,
+  "ram_utilization": 45,
+  "trend_coefficient": 75.0,
+  "avg_connection_duration": 100,
+  "bytes_sent": 0.0,
+  "bytes_received": 83.0829,
+  "error_ratio": 0
+}
+2025-03-07 07:47:48,352 - INFO -   Weighted score: 58.31
+2025-03-07 07:47:48,352 - INFO -   Final weight: 58
+2025-03-07 07:47:48,352 - INFO - Weight calculation for 10.0.0.6 (lb):
+2025-03-07 07:47:48,352 - INFO -   Scores: {
+  "cpu_utilization": 54,
+  "ram_utilization": 44,
+  "trend_coefficient": 80.0,
+  "avg_connection_duration": 100,
+  "bytes_sent": 100,
+  "bytes_received": 100,
+  "error_ratio": 60.0
+}
+2025-03-07 07:47:48,352 - INFO -   Weighted score: 76.70
+2025-03-07 07:47:48,353 - INFO -   Final weight: 77
+2025-03-07 07:47:48,353 - INFO - Weight calculation for 172.31.35.53 (lb):
+2025-03-07 07:47:48,353 - INFO -   Scores: {
+  "cpu_utilization": 59,
+  "ram_utilization": 59,
+  "trend_coefficient": 55.00000000000001,
+  "avg_connection_duration": 100,
+  "bytes_sent": 100,
+  "bytes_received": 100,
+  "error_ratio": 60.0
+}
+2025-03-07 07:47:48,353 - INFO -   Weighted score: 74.70
+2025-03-07 07:47:48,353 - INFO -   Final weight: 75
+2025-03-07 07:47:48,353 - INFO - Weight calculation for 172.31.43.77 (lb):
+2025-03-07 07:47:48,353 - INFO -   Scores: {
+  "cpu_utilization": 47,
+  "ram_utilization": 37,
+  "trend_coefficient": 15.000000000000002,
+  "avg_connection_duration": 100,
+  "bytes_sent": 100,
+  "bytes_received": 100,
+  "error_ratio": 60.0
+}
+2025-03-07 07:47:48,354 - INFO -   Weighted score: 61.60
+2025-03-07 07:47:48,354 - INFO -   Final weight: 62
+2025-03-07 07:47:48,354 - INFO - Updating weights in Consul
+2025-03-07 07:47:48,354 - INFO - Updating weight for lb (10.0.0.5) to 58
+2025-03-07 07:47:48,362 - INFO - Updating tag from 'urlprefix-/api weight=58' to 'urlprefix-/api weight=58'
+2025-03-07 07:47:48,370 - INFO - Successfully updated weight for service sdn-news-APP-1-10.0.0.5 to 58
+2025-03-07 07:47:48,370 - INFO - Successfully updated weight for sdn-news-APP-1-10.0.0.5
+2025-03-07 07:47:48,371 - INFO - Updating weight for lb (10.0.0.6) to 77
+2025-03-07 07:47:48,377 - INFO - Updating tag from 'urlprefix-/api weight=77' to 'urlprefix-/api weight=77'
+2025-03-07 07:47:48,384 - INFO - Successfully updated weight for service sdn-news-APP-2-10.0.0.6 to 77
+2025-03-07 07:47:48,385 - INFO - Successfully updated weight for sdn-news-APP-2-10.0.0.6
+2025-03-07 07:47:48,385 - INFO - Updating weight for lb (172.31.35.53) to 75
+2025-03-07 07:47:48,393 - INFO - Updating tag from 'urlprefix-/api weight=75' to 'urlprefix-/api weight=75'
+2025-03-07 07:47:48,397 - INFO - Successfully updated weight for service sdn-news-ip-172-31-35-53-172.31.35.53 to 75
+2025-03-07 07:47:48,398 - INFO - Successfully updated weight for sdn-news-ip-172-31-35-53-172.31.35.53
+2025-03-07 07:47:48,398 - INFO - Updating weight for lb (172.31.43.77) to 62
+2025-03-07 07:47:48,405 - INFO - Updating tag from 'urlprefix-/api weight=62' to 'urlprefix-/api weight=62'
+2025-03-07 07:47:48,411 - INFO - Successfully updated weight for service sdn-news-ip-172-31-43-77-172.31.43.77 to 62
+2025-03-07 07:47:48,411 - INFO - Successfully updated weight for sdn-news-ip-172-31-43-77-172.31.43.77
+2025-03-07 07:47:48,435 - INFO - Exported weights to load_balancing_weights_20250307_074748.xlsx
+2025-03-07 07:47:48,435 - INFO - Exported JSON data to load_balancing_weights_20250307_074748.json
+2025-03-07 07:47:48,436 - INFO - Cycle completed in 0.66 seconds
+2025-03-07 07:47:48,436 - INFO - Sleeping for 599.34 seconds until next cycle
