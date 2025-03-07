@@ -128,6 +128,115 @@ def export_to_excel(instance_data):
     
     print(f"\nExported instance data to {excel_file}")
 
+def update_service_weight(ip_address="10.0.0.5", new_weight=60):
+    """Update the weight tag for a specific service instance in Consul"""
+    protocol = "https" if USE_HTTPS else "http"
+    
+    print(f"Updating weight for service instance with IP: {ip_address}")
+    print(f"New weight will be: {new_weight}")
+    
+    # Step 1: Find the service instance with the specified IP
+    consul_url = f"{protocol}://{CONSUL_HOST}:{CONSUL_PORT}/v1/catalog/service/{SERVICE_NAME}"
+    
+    try:
+        # Get all service instances
+        response = requests.get(consul_url, verify=False)
+        
+        if response.status_code != 200:
+            print(f"Error: Received status code {response.status_code}")
+            print(f"Response: {response.text}")
+            return False
+        
+        services = response.json()
+        
+        # Find the instance with the target IP
+        target_instance = None
+        for instance in services:
+            service_address = instance.get('ServiceAddress') or instance.get('Address')
+            if service_address == ip_address:
+                target_instance = instance
+                break
+        
+        if not target_instance:
+            print(f"No service instance found with IP: {ip_address}")
+            return False
+        
+        # Extract service details
+        service_id = target_instance.get('ServiceID')
+        print(f"Found service instance: {service_id}")
+        
+        # Step 2: Get detailed service information
+        agent_url = f"{protocol}://{CONSUL_HOST}:{CONSUL_PORT}/v1/agent/service/{service_id}"
+        agent_response = requests.get(agent_url, verify=False)
+        
+        if agent_response.status_code != 200:
+            print(f"Error getting service details: {agent_response.status_code}")
+            print(f"Response: {agent_response.text}")
+            return False
+            
+        service_details = agent_response.json()
+        
+        # Step 3: Update the weight in the tags
+        current_tags = service_details.get('Tags', [])
+        new_tags = []
+        weight_updated = False
+        
+        for tag in current_tags:
+            if 'urlprefix-/api weight=' in tag:
+                # Replace the weight value
+                parts = tag.split('weight=')
+                new_tag = f"{parts[0]}weight={new_weight}"
+                new_tags.append(new_tag)
+                weight_updated = True
+                print(f"Updating tag from '{tag}' to '{new_tag}'")
+            else:
+                new_tags.append(tag)
+        
+        # If no matching tag was found, add a new one
+        if not weight_updated:
+            new_tag = f"urlprefix-/api weight={new_weight}"
+            new_tags.append(new_tag)
+            print(f"Adding new tag: '{new_tag}'")
+        
+        # Step 4: Prepare the updated service registration payload
+        # Using correct field names as expected by Consul API
+        updated_service = {
+            "ID": service_id,
+            "Name": service_details.get('Service'),  # Changed 'Service' to 'Name'
+            "Tags": new_tags,
+            "Address": service_details.get('Address', ip_address),
+            "Port": service_details.get('Port', 0)
+        }
+        
+        # Add Meta field only if it exists in original service
+        if 'Meta' in service_details:
+            updated_service["Meta"] = service_details.get('Meta', {})
+            
+        print(f"Sending updated service registration: {json.dumps(updated_service, indent=2)}")
+        
+        # Step 5: Re-register the service with updated tags
+        register_url = f"{protocol}://{CONSUL_HOST}:{CONSUL_PORT}/v1/agent/service/register"
+        register_response = requests.put(
+            register_url,
+            json=updated_service,
+            verify=False
+        )
+        
+        if register_response.status_code == 200:
+            print(f"Successfully updated weight for service {service_id} to {new_weight}")
+            return True
+        else:
+            print(f"Error updating service: {register_response.status_code}")
+            print(f"Response: {register_response.text}")
+            return False
+            
+    except Exception as e:
+        print(f"Error updating service weight: {e}")
+        return False
+
 if __name__ == "__main__":
     print("Querying Consul Service Registry...")
     query_service_instances()
+    
+    print("\nUpdating service weight...")
+    update_service_weight("10.0.0.5", 60)
