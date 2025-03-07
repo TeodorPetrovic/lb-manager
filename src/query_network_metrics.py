@@ -12,8 +12,8 @@ PASSWORD = "-5HJtLOH+H3ma-S*9wAA"
 
 # Host IP and time range
 HOST_IP = "10.0.0.5"
-START_TIME = "2025-02-23T18:00:00+00:00"
-END_TIME = "2025-02-23T18:10:00+00:00"
+START_TIME = "2025-03-07T08:00:00+00:00"
+END_TIME = "2025-03-07T09:10:00+00:00"
 
 def query_network_metrics():
     """Query and save raw network metrics to a JSON file"""
